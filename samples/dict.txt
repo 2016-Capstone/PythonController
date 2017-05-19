@@ -1,0 +1,485 @@
+Searching for devices
+Will connect to Bebop2-A044735
+Sent command common.Common.CurrentDate with args ('2017-05-19',)
+Received command : {'arg0': '2017-05-19', 'args': {u'date': '2017-05-19'}, 'listtype_str': 'NONE', 'name': u'common.CommonState.CurrentDateChanged', 'listtype': 0, 'cmd': u'CurrentDateChanged', 'class': u'CommonState', 'proj': u'common'}
+Sent command common.Common.CurrentTime with args ('T022839+0000',)
+Received command : {'arg0': 'T022839+0000', 'args': {u'time': 'T022839+0000'}, 'listtype_str': 'NONE', 'name': u'common.CommonState.CurrentTimeChanged', 'listtype': 0, 'cmd': u'CurrentTimeChanged', 'class': u'CommonState', 'proj': u'common'}
+Sent command common.Settings.AllSettings with args ()
+Received command : {'arg0': 'Bebop2-A044735', 'args': {u'name': 'Bebop2-A044735'}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.ProductNameChanged', 'listtype': 0, 'cmd': u'ProductNameChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': 'PI040384A', 'args': {u'high': 'PI040384A'}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.ProductSerialHighChanged', 'listtype': 0, 'cmd': u'ProductSerialHighChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': 'B6A044735', 'args': {u'low': 'B6A044735'}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.ProductSerialLowChanged', 'listtype': 0, 'cmd': u'ProductSerialLowChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': '4.0.6', 'args': {u'hardware': 'HW_02', u'software': '4.0.6'}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.ProductVersionChanged', 'listtype': 0, 'cmd': u'ProductVersionChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'automatic': 0}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.AutoCountryChanged', 'listtype': 0, 'cmd': u'AutoCountryChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': 'US', 'args': {u'code': 'US'}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.CountryChanged', 'listtype': 0, 'cmd': u'CountryChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': 30.0, 'args': {u'current': 30.0, u'max': 150.0, u'min': 0.5}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingSettingsState.MaxAltitudeChanged', 'listtype': 0, 'cmd': u'MaxAltitudeChanged', 'class': u'PilotingSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 2000.0, 'args': {u'current': 2000.0, u'max': 2000.0, u'min': 10.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingSettingsState.MaxDistanceChanged', 'listtype': 0, 'cmd': u'MaxDistanceChanged', 'class': u'PilotingSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0, 'args': {u'speedY': 0.0, u'speedX': 0.0, u'speedZ': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.SpeedChanged', 'listtype': 0, 'cmd': u'SpeedChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0, 'args': {u'altitude': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AltitudeChanged', 'listtype': 0, 'cmd': u'AltitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.00275762053206563, 'args': {u'yaw': 2.315835475921631, u'roll': 0.00275762053206563, u'pitch': 0.0014383357483893633}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AttitudeChanged', 'listtype': 0, 'cmd': u'AttitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': -13, 'args': {u'tilt': -13, u'pan': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.CameraState.Orientation', 'listtype': 0, 'cmd': u'Orientation', 'class': u'CameraState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'shouldNotFlyOver': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingSettingsState.NoFlyOverMaxDistanceChanged', 'listtype': 0, 'cmd': u'NoFlyOverMaxDistanceChanged', 'class': u'PilotingSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 20.0, 'args': {u'current': 20.0, u'max': 35.0, u'min': 5.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingSettingsState.MaxTiltChanged', 'listtype': 0, 'cmd': u'MaxTiltChanged', 'class': u'PilotingSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'on': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingSettingsState.AbsolutControlChanged', 'listtype': 0, 'cmd': u'AbsolutControlChanged', 'class': u'PilotingSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'state': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingSettingsState.BankedTurnChanged', 'listtype': 0, 'cmd': u'BankedTurnChanged', 'class': u'PilotingSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1.0, 'args': {u'current': 1.0, u'max': 6.0, u'min': 0.5}, 'listtype_str': 'NONE', 'name': u'ardrone3.SpeedSettingsState.MaxVerticalSpeedChanged', 'listtype': 0, 'cmd': u'MaxVerticalSpeedChanged', 'class': u'SpeedSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 100.0, 'args': {u'current': 100.0, u'max': 200.0, u'min': 10.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.SpeedSettingsState.MaxRotationSpeedChanged', 'listtype': 0, 'cmd': u'MaxRotationSpeedChanged', 'class': u'SpeedSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'present': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.SpeedSettingsState.HullProtectionChanged', 'listtype': 0, 'cmd': u'HullProtectionChanged', 'class': u'SpeedSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'outdoor': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.SpeedSettingsState.OutdoorChanged', 'listtype': 0, 'cmd': u'OutdoorChanged', 'class': u'SpeedSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'outdoor': 1}, 'listtype_str': 'NONE', 'name': u'common.WifiSettingsState.outdoorSettingsChanged', 'listtype': 0, 'cmd': u'outdoorSettingsChanged', 'class': u'WifiSettingsState', 'proj': u'common'}
+Received command : {'arg0': 300.0, 'args': {u'current': 300.0, u'max': 300.0, u'min': 80.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.SpeedSettingsState.MaxPitchRollRotationSpeedChanged', 'listtype': 0, 'cmd': u'MaxPitchRollRotationSpeedChanged', 'class': u'SpeedSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'band': 0, u'type': 1, u'channel': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.NetworkSettingsState.WifiSelectionChanged', 'listtype': 0, 'cmd': u'WifiSelectionChanged', 'class': u'NetworkSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 2, 'args': {u'type': 2}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.PictureFormatChanged', 'listtype': 0, 'cmd': u'PictureFormatChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'type': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.AutoWhiteBalanceChanged', 'listtype': 0, 'cmd': u'AutoWhiteBalanceChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0, 'args': {u'max': 1.5, u'value': 0.0, u'min': -1.5}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.ExpositionChanged', 'listtype': 0, 'cmd': u'ExpositionChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0, 'args': {u'max': 100.0, u'value': 0.0, u'min': -100.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.SaturationChanged', 'listtype': 0, 'cmd': u'SaturationChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'minInterval': 1.0, u'maxInterval': 300.0, u'interval': 8.0, u'enabled': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.TimelapseChanged', 'listtype': 0, 'cmd': u'TimelapseChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'enabled': 0, u'mass_storage_id': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoAutorecordChanged', 'listtype': 0, 'cmd': u'VideoAutorecordChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'mode': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoStabilizationModeChanged', 'listtype': 0, 'cmd': u'VideoStabilizationModeChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'mode': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoRecordingModeChanged', 'listtype': 0, 'cmd': u'VideoRecordingModeChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'framerate': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoFramerateChanged', 'listtype': 0, 'cmd': u'VideoFramerateChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'type': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoResolutionsChanged', 'listtype': 0, 'cmd': u'VideoResolutionsChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 500.0, 'args': {u'latitude_accuracy': -72, u'altitude': 500.0, u'longitude': 500.0, u'altitude_accuracy': -90, u'longitude_accuracy': -108, u'latitude': 500.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.GpsLocationChanged', 'listtype': 0, 'cmd': u'GpsLocationChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'frequency': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.AntiflickeringState.electricFrequencyChanged', 'listtype': 0, 'cmd': u'electricFrequencyChanged', 'class': u'AntiflickeringState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'mode': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.AntiflickeringState.modeChanged', 'listtype': 0, 'cmd': u'modeChanged', 'class': u'AntiflickeringState', 'proj': u'ardrone3'}
+Received command : {'arg0': '2.01F', 'args': {u'hardware': '', u'software': '2.01F'}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.ProductGPSVersionChanged', 'listtype': 0, 'cmd': u'ProductGPSVersionChanged', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 30, 'args': {u'delay': 30}, 'listtype_str': 'NONE', 'name': u'ardrone3.GPSSettingsState.ReturnHomeDelayChanged', 'listtype': 0, 'cmd': u'ReturnHomeDelayChanged', 'class': u'GPSSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'type': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.GPSSettingsState.HomeTypeChanged', 'listtype': 0, 'cmd': u'HomeTypeChanged', 'class': u'GPSSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0, 'args': {u'speedY': 0.0, u'speedX': 0.0, u'speedZ': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.SpeedChanged', 'listtype': 0, 'cmd': u'SpeedChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 'P742P2CX8500007251D0', 'args': {u'id': 'P742P2CX8500007251D0'}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.CPUID', 'listtype': 0, 'cmd': u'CPUID', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 'P732P2CX8500007251D0', 'args': {u'serialID': 'P732P2CX8500007251D0'}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.P7ID', 'listtype': 0, 'cmd': u'P7ID', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'features': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PROState.Features', 'listtype': 0, 'cmd': u'Features', 'class': u'PROState', 'proj': u'ardrone3'}
+Received command : {'arg0': '', 'args': {}, 'listtype_str': 'NONE', 'name': u'common.SettingsState.AllSettingsChanged', 'listtype': 0, 'cmd': u'AllSettingsChanged', 'class': u'SettingsState', 'proj': u'common'}
+Received command : {'arg0': 0.0, 'args': {u'altitude': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AltitudeChanged', 'listtype': 0, 'cmd': u'AltitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.002929628361016512, 'args': {u'yaw': 2.3158111572265625, u'roll': 0.002929628361016512, u'pitch': 0.0014114738442003727}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AttitudeChanged', 'listtype': 0, 'cmd': u'AttitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': '4.0.0.4', 'args': {u'version': '4.0.0.4'}, 'listtype_str': 'NONE', 'name': u'common.ARLibsVersionsState.DeviceLibARCommandsVersion', 'listtype': 0, 'cmd': u'DeviceLibARCommandsVersion', 'class': u'ARLibsVersionsState', 'proj': u'common'}
+ Sent command common.Common.AllStates with args ()
+Received command : {'arg0': 22, 'args': {u'percent': 22}, 'listtype_str': 'NONE', 'name': u'common.CommonState.BatteryStateChanged', 'listtype': 0, 'cmd': u'BatteryStateChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': '', 'args': {u'runId': ''}, 'listtype_str': 'NONE', 'name': u'common.RunState.RunIdChanged', 'listtype': 0, 'cmd': u'RunIdChanged', 'class': u'RunState', 'proj': u'common'}
+Received command : {'arg0': -13, 'args': {u'tilt': -13, u'pan': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.CameraState.Orientation', 'listtype': 0, 'cmd': u'Orientation', 'class': u'CameraState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'nbVideos': 59, u'nbCrashLogs': 0, u'nbPuds': 0, u'mass_storage_id': 0, u'nbPhotos': 2}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.DeprecatedMassStorageContentChanged', 'listtype': 2, 'cmd': u'DeprecatedMassStorageContentChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'state': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.FlyingStateChanged', 'listtype': 0, 'cmd': u'FlyingStateChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'sensorState': 1, u'sensorName': 0}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.SensorsStatesListChanged', 'listtype': 2, 'cmd': u'SensorsStatesListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 1, 'args': {u'sensorState': 1, u'sensorName': 1}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.SensorsStatesListChanged', 'listtype': 2, 'cmd': u'SensorsStatesListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 2, 'args': {u'sensorState': 1, u'sensorName': 2}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.SensorsStatesListChanged', 'listtype': 2, 'cmd': u'SensorsStatesListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 3, 'args': {u'sensorState': 1, u'sensorName': 3}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.SensorsStatesListChanged', 'listtype': 2, 'cmd': u'SensorsStatesListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 4, 'args': {u'sensorState': 1, u'sensorName': 4}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.SensorsStatesListChanged', 'listtype': 2, 'cmd': u'SensorsStatesListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': -13, 'args': {u'tilt': -13, u'pan': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.CameraState.Orientation', 'listtype': 0, 'cmd': u'Orientation', 'class': u'CameraState', 'proj': u'ardrone3'}
+Received command : {'arg0': 5, 'args': {u'sensorState': 1, u'sensorName': 5}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.SensorsStatesListChanged', 'listtype': 2, 'cmd': u'SensorsStatesListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'required': 0}, 'listtype_str': 'NONE', 'name': u'common.CalibrationState.MagnetoCalibrationRequiredState', 'listtype': 0, 'cmd': u'MagnetoCalibrationRequiredState', 'class': u'CalibrationState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'keyType': 0, u'type': 0, u'key': ''}, 'listtype_str': 'NONE', 'name': u'ardrone3.NetworkSettingsState.wifiSecurity', 'listtype': 0, 'cmd': u'wifiSecurity', 'class': u'NetworkSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'type': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.NetworkSettingsState.wifiSecurityChanged', 'listtype': 0, 'cmd': u'wifiSecurityChanged', 'class': u'NetworkSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'State': 1, u'component': 1}, 'listtype_str': 'MAP_ITEM', 'name': u'common.FlightPlanState.ComponentStateListChanged', 'listtype': 2, 'cmd': u'ComponentStateListChanged', 'class': u'FlightPlanState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'State': 0, u'component': 0}, 'listtype_str': 'MAP_ITEM', 'name': u'common.FlightPlanState.ComponentStateListChanged', 'listtype': 2, 'cmd': u'ComponentStateListChanged', 'class': u'FlightPlanState', 'proj': u'common'}
+Received command : {'arg0': 2, 'args': {u'State': 1, u'component': 2}, 'listtype_str': 'MAP_ITEM', 'name': u'common.FlightPlanState.ComponentStateListChanged', 'listtype': 2, 'cmd': u'ComponentStateListChanged', 'class': u'FlightPlanState', 'proj': u'common'}
+Received command : {'arg0': 0.0, 'args': {u'speedY': 0.0, u'speedX': 0.0, u'speedZ': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.SpeedChanged', 'listtype': 0, 'cmd': u'SpeedChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 3, 'args': {u'State': 1, u'component': 3}, 'listtype_str': 'MAP_ITEM', 'name': u'common.FlightPlanState.ComponentStateListChanged', 'listtype': 2, 'cmd': u'ComponentStateListChanged', 'class': u'FlightPlanState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'AvailabilityState': 0}, 'listtype_str': 'NONE', 'name': u'common.FlightPlanState.AvailabilityStateChanged', 'listtype': 0, 'cmd': u'AvailabilityStateChanged', 'class': u'FlightPlanState', 'proj': u'common'}
+Received command : {'arg0': 1, 'args': {u'state': 1, u'type': 0, u'filepath': '/data/ftp/internal_000/flightplans/flightPlan.mavlink'}, 'listtype_str': 'NONE', 'name': u'common.MavlinkState.MavlinkFilePlayingStateChanged', 'listtype': 0, 'cmd': u'MavlinkFilePlayingStateChanged', 'class': u'MavlinkState', 'proj': u'common'}
+Received command : {'arg0': 80.0, 'args': {u'tiltMax': 17.0, u'fov': 80.0, u'panMax': 35.0, u'tiltMin': -83.0, u'panMin': -35.0}, 'listtype_str': 'NONE', 'name': u'common.CameraSettingsState.CameraSettingsChanged', 'listtype': 0, 'cmd': u'CameraSettingsChanged', 'class': u'CameraSettingsState', 'proj': u'common'}
+Received command : {'arg0': 0.0, 'args': {u'altitude': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AltitudeChanged', 'listtype': 0, 'cmd': u'AltitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': -13, 'args': {u'tilt': -13, u'pan': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.CameraState.defaultCameraOrientation', 'listtype': 0, 'cmd': u'defaultCameraOrientation', 'class': u'CameraState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'fixed': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.GPSSettingsState.GPSFixStateChanged', 'listtype': 0, 'cmd': u'GPSFixStateChanged', 'class': u'GPSSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'state': 0, u'reason': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.NavigateHomeStateChanged', 'listtype': 0, 'cmd': u'NavigateHomeStateChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0028999503701925278, 'args': {u'yaw': 2.245736837387085, u'roll': 0.0028999503701925278, u'pitch': 0.0013520409120246768}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AttitudeChanged', 'listtype': 0, 'cmd': u'AttitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 500.0, 'args': {u'latitude': 500.0, u'altitude': 500.0, u'longitude': 500.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.GPSSettingsState.HomeChanged', 'listtype': 0, 'cmd': u'HomeChanged', 'class': u'GPSSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'type': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.GPSSettingsState.HomeTypeChanged', 'listtype': 0, 'cmd': u'HomeTypeChanged', 'class': u'GPSSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'available': 0, u'type': 0}, 'listtype_str': 'MAP_ITEM', 'name': u'ardrone3.GPSState.HomeTypeAvailabilityChanged', 'listtype': 2, 'cmd': u'HomeTypeAvailabilityChanged', 'class': u'GPSState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'available': 0, u'type': 1}, 'listtype_str': 'MAP_ITEM', 'name': u'ardrone3.GPSState.HomeTypeAvailabilityChanged', 'listtype': 2, 'cmd': u'HomeTypeAvailabilityChanged', 'class': u'GPSState', 'proj': u'ardrone3'}
+Received command : {'arg0': 2, 'args': {u'available': 0, u'type': 2}, 'listtype_str': 'MAP_ITEM', 'name': u'ardrone3.GPSState.HomeTypeAvailabilityChanged', 'listtype': 2, 'cmd': u'HomeTypeAvailabilityChanged', 'class': u'GPSState', 'proj': u'ardrone3'}
+Received command : {'arg0': -13, 'args': {u'tilt': -13, u'pan': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.CameraState.Orientation', 'listtype': 0, 'cmd': u'Orientation', 'class': u'CameraState', 'proj': u'ardrone3'}
+Received command : {'arg0': 3, 'args': {u'available': 0, u'type': 3}, 'listtype_str': 'MAP_ITEM', 'name': u'ardrone3.GPSState.HomeTypeAvailabilityChanged', 'listtype': 2, 'cmd': u'HomeTypeAvailabilityChanged', 'class': u'GPSState', 'proj': u'ardrone3'}
+Received command : {'arg0': 2, 'args': {u'type': 2}, 'listtype_str': 'NONE', 'name': u'ardrone3.GPSState.HomeTypeChosenChanged', 'listtype': 0, 'cmd': u'HomeTypeChosenChanged', 'class': u'GPSState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'enabled': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.MediaStreamingState.VideoEnableChanged', 'listtype': 0, 'cmd': u'VideoEnableChanged', 'class': u'MediaStreamingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'mode': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoRecordingModeChanged', 'listtype': 0, 'cmd': u'VideoRecordingModeChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'framerate': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoFramerateChanged', 'listtype': 0, 'cmd': u'VideoFramerateChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'type': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PictureSettingsState.VideoResolutionsChanged', 'listtype': 0, 'cmd': u'VideoResolutionsChanged', 'class': u'PictureSettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'state': 0, u'error': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.MediaRecordState.VideoStateChangedV2', 'listtype': 0, 'cmd': u'VideoStateChangedV2', 'class': u'MediaRecordState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'state': 0, u'mass_storage_id': 255}, 'listtype_str': 'NONE', 'name': u'ardrone3.MediaRecordState.VideoStateChanged', 'listtype': 0, 'cmd': u'VideoStateChanged', 'class': u'MediaRecordState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'state': 0, u'error': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.MediaRecordState.PictureStateChangedV2', 'listtype': 0, 'cmd': u'PictureStateChangedV2', 'class': u'MediaRecordState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'mode': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.MediaStreamingState.VideoStreamModeChanged', 'listtype': 0, 'cmd': u'VideoStreamModeChanged', 'class': u'MediaStreamingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'animation': 0, u'mode': 0, u'behavior': 0, u'animation_available': 1}, 'listtype_str': 'NONE', 'name': u'follow_me..state', 'listtype': 0, 'cmd': u'state', 'class': '', 'proj': u'follow_me'}
+Received command : {'arg0': 1, 'args': {u'improvements': 127, u'mode': 1, u'missing_requirements': 63}, 'listtype_str': 'MAP_ITEM', 'name': u'follow_me..mode_info', 'listtype': 2, 'cmd': u'mode_info', 'class': '', 'proj': u'follow_me'}
+Received command : {'arg0': 2, 'args': {u'improvements': 127, u'mode': 2, u'missing_requirements': 0}, 'listtype_str': 'MAP_ITEM', 'name': u'follow_me..mode_info', 'listtype': 2, 'cmd': u'mode_info', 'class': '', 'proj': u'follow_me'}
+Received command : {'arg0': 3, 'args': {u'improvements': 127, u'mode': 3, u'missing_requirements': 0}, 'listtype_str': 'MAP_ITEM', 'name': u'follow_me..mode_info', 'listtype': 2, 'cmd': u'mode_info', 'class': '', 'proj': u'follow_me'}
+Received command : {'arg0': '', 'args': {}, 'listtype_str': 'NONE', 'name': u'common.CommonState.AllStatesChanged', 'listtype': 0, 'cmd': u'AllStatesChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'state': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AlertStateChanged', 'listtype': 0, 'cmd': u'AlertStateChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'mass_storage_id': 0, u'name': 'internal'}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.MassStorageStateListChanged', 'listtype': 2, 'cmd': u'MassStorageStateListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'full': 1, u'plugged': 1, u'internal': 1, u'mass_storage_id': 0, u'used_size': 7240, u'size': 7338}, 'listtype_str': 'MAP_ITEM', 'name': u'common.CommonState.MassStorageInfoStateListChanged', 'listtype': 2, 'cmd': u'MassStorageInfoStateListChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': '6.3.R.4', 'args': {u'version': '6.3.R.4'}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.MotorSoftwareVersionChanged', 'listtype': 0, 'cmd': u'MotorSoftwareVersionChanged', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'motorError': 0, u'motorIds': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.MotorErrorStateChanged', 'listtype': 0, 'cmd': u'MotorErrorStateChanged', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 131, 'args': {u'lastFlightDuration': 28, u'totalFlightDuration': 4007, u'nbFlights': 131}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.MotorFlightsStatusChanged', 'listtype': 0, 'cmd': u'MotorFlightsStatusChanged', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Sent command ardrone3.MediaStreaming.VideoEnable with args (0,)
+Internal state :
+Received command : {'arg0': 2, 'args': {u'motorError': 2}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.MotorErrorLastErrorChanged', 'listtype': 0, 'cmd': u'MotorErrorLastErrorChanged', 'class': u'SettingsState', 'proj': u'ardrone3'}
+{u'ardrone3': {u'AntiflickeringState': {u'electricFrequencyChanged': {u'frequency': 0},
+                                        u'modeChanged': {u'mode': 0}},
+               u'CameraState': {u'Orientation': {u'pan': 0, u'tilt': -13},
+                                u'defaultCameraOrientation': {u'pan': 0,
+                                                              u'tilt': -13}},
+               u'GPSSettingsState': {u'GPSFixStateChanged': {u'fixed': 0},
+                                     u'HomeChanged': {u'altitude': 500.0,
+                                                      u'latitude': 500.0,
+                                                      u'longitude': 500.0},
+                                     u'HomeTypeChanged': {u'type': 1},
+                                     u'ReturnHomeDelayChanged': {u'delay': 30}},
+               u'GPSState': {u'HomeTypeAvailabilityChanged': {0: {u'available': 0,
+                                                                  u'type': 0},
+                                                              1: {u'available': 0,
+                                                                  u'type': 1},
+                                                              2: {u'available': 0,
+                                                                  u'type': 2},
+                                                              3: {u'available': 0,
+                                                                  u'type': 3}},
+                             u'HomeTypeChosenChanged': {u'type': 2}},
+               u'MediaRecordState': {u'PictureStateChangedV2': {u'error': 0,
+                                                                u'state': 0},
+                                     u'VideoStateChanged': {u'mass_storage_id': 255,
+                                                            u'state': 0},
+                                     u'VideoStateChangedV2': {u'error': 0,
+                                                              u'state': 0}},
+               u'MediaStreamingState': {u'VideoEnableChanged': {u'enabled': 1},
+                                        u'VideoStreamModeChanged': {u'mode': 0}},
+               u'NetworkSettingsState': {u'WifiSelectionChanged': {u'band': 0,
+                                                                   u'channel': 1,
+                                                                   u'type': 1},
+                                         u'wifiSecurity': {u'key': '',
+                                                           u'keyType': 0,
+                                                           u'type': 0},
+                                         u'wifiSecurityChanged': {u'type': 0}},
+               u'PROState': {u'Features': {u'features': 0}},
+               u'PictureSettingsState': {u'AutoWhiteBalanceChanged': {u'type': 0},
+                                         u'ExpositionChanged': {u'max': 1.5,
+                                                                u'min': -1.5,
+                                                                u'value': 0.0},
+                                         u'PictureFormatChanged': {u'type': 2},
+                                         u'SaturationChanged': {u'max': 100.0,
+                                                                u'min': -100.0,
+                                                                u'value': 0.0},
+                                         u'TimelapseChanged': {u'enabled': 0,
+                                                               u'interval': 8.0,
+                                                               u'maxInterval': 300.0,
+                                                               u'minInterval': 1.0},
+                                         u'VideoAutorecordChanged': {u'enabled': 0,
+                                                                     u'mass_storage_id': 0},
+                                         u'VideoFramerateChanged': {u'framerate': 0},
+                                         u'VideoRecordingModeChanged': {u'mode': 0},
+                                         u'VideoResolutionsChanged': {u'type': 0},
+                                         u'VideoStabilizationModeChanged': {u'mode': 0}},
+               u'PilotingSettingsState': {u'AbsolutControlChanged': {u'on': 0},
+                                          u'BankedTurnChanged': {u'state': 0},
+                                          u'MaxAltitudeChanged': {u'current': 30.0,
+                                                                  u'max': 150.0,
+                                                                  u'min': 0.5},
+                                          u'MaxDistanceChanged': {u'current': 2000.0,
+                                                                  u'max': 2000.0,
+                                                                  u'min': 10.0},
+                                          u'MaxTiltChanged': {u'current': 20.0,
+                                                              u'max': 35.0,
+                                                              u'min': 5.0},
+                                          u'NoFlyOverMaxDistanceChanged': {u'shouldNotFlyOver': 0}},
+               u'PilotingState': {u'AlertStateChanged': {u'state': 0},
+                                  u'AltitudeChanged': {u'altitude': 0.0},
+                                  u'AttitudeChanged': {u'pitch': 0.0013520409120246768,
+                                                       u'roll': 0.0028999503701925278,
+                                                       u'yaw': 2.245736837387085},
+                                  u'FlyingStateChanged': {u'state': 0},
+                                  u'GpsLocationChanged': {u'altitude': 500.0,
+                                                          u'altitude_accuracy': -90,
+                                                          u'latitude': 500.0,
+                                                          u'latitude_accuracy': -72,
+                                                          u'longitude': 500.0,
+                                                          u'longitude_accuracy': -108},
+                                  u'NavigateHomeStateChanged': {u'reason': 0,
+                                                                u'state': 0},
+                                  u'SpeedChanged': {u'speedX': 0.0,
+                                                    u'speedY': 0.0,
+                                                    u'speedZ': 0.0}},
+               u'SettingsState': {u'CPUID': {u'id': 'P742P2CX8500007251D0'},
+                                  u'MotorErrorStateChanged': {u'motorError': 0,
+                                                              u'motorIds': 0},
+                                  u'MotorFlightsStatusChanged': {u'lastFlightDuration': 28,
+                                                                 u'nbFlights': 131,
+                                                                 u'totalFlightDuration': 4007},
+                                  u'MotorSoftwareVersionChanged': {u'version': '6.3.R.4'},
+                                  u'P7ID': {u'serialID': 'P732P2CX8500007251D0'},
+                                  u'ProductGPSVersionChanged': {u'hardware': '',
+                                                                u'software': '2.01F'}},
+               u'SpeedSettingsState': {u'HullProtectionChanged': {u'present': 1},
+                                       u'MaxPitchRollRotationSpeedChanged': {u'current': 300.0,
+                                                                             u'max': 300.0,
+                                                                             u'min': 80.0},
+                                       u'MaxRotationSpeedChanged': {u'current': 100.0,
+                                                                    u'max': 200.0,
+                                                                    u'min': 10.0},
+                                       u'MaxVerticalSpeedChanged': {u'current': 1.0,
+                                                                    u'max': 6.0,
+                                                                    u'min': 0.5},
+                                       u'OutdoorChanged': {u'outdoor': 1}}},
+ u'common': {u'ARLibsVersionsState': {u'DeviceLibARCommandsVersion': {u'version': '4.0.0.4'}},
+             u'CalibrationState': {u'MagnetoCalibrationRequiredState': {u'required': 0}},
+             u'CameraSettingsState': {u'CameraSettingsChanged': {u'fov': 80.0,
+                                                                 u'panMax': 35.0,
+                                                                 u'panMin': -35.0,
+                                                                 u'tiltMax': 17.0,
+                                                                 u'tiltMin': -83.0}},
+             u'CommonState': {u'AllStatesChanged': {},
+                              u'BatteryStateChanged': {u'percent': 22},
+                              u'CurrentDateChanged': {u'date': '2017-05-19'},
+                              u'CurrentTimeChanged': {u'time': 'T022839+0000'},
+                              u'DeprecatedMassStorageContentChanged': {0: {u'mass_storage_id': 0,
+                                                                           u'nbCrashLogs': 0,
+                                                                           u'nbPhotos': 2,
+                                                                           u'nbPuds': 0,
+                                                                           u'nbVideos': 59}},
+                              u'MassStorageInfoStateListChanged': {0: {u'full': 1,
+                                                                       u'internal': 1,
+                                                                       u'mass_storage_id': 0,
+                                                                       u'plugged': 1,
+                                                                       u'size': 7338,
+                                                                       u'used_size': 7240}},
+                              u'MassStorageStateListChanged': {0: {u'mass_storage_id': 0,
+                                                                   u'name': 'internal'}},
+                              u'SensorsStatesListChanged': {0: {u'sensorName': 0,
+                                                                u'sensorState': 1},
+                                                            1: {u'sensorName': 1,
+                                                                u'sensorState': 1},
+                                                            2: {u'sensorName': 2,
+                                                                u'sensorState': 1},
+                                                            3: {u'sensorName': 3,
+                                                                u'sensorState': 1},
+                                                            4: {u'sensorName': 4,
+                                                                u'sensorState': 1},
+                                                            5: {u'sensorName': 5,
+                                                                u'sensorState': 1}}},
+             u'FlightPlanState': {u'AvailabilityStateChanged': {u'AvailabilityState': 0},
+                                  u'ComponentStateListChanged': {0: {u'State': 0,
+                                                                     u'component': 0},
+                                                                 1: {u'State': 1,
+                                                                     u'component': 1},
+                                                                 2: {u'State': 1,
+                                                                     u'component': 2},
+                                                                 3: {u'State': 1,
+                                                                     u'component': 3}}},
+             u'MavlinkState': {u'MavlinkFilePlayingStateChanged': {u'filepath': '/data/ftp/internal_000/flightplans/flightPlan.mavlink',
+                                                                   u'state': 1,
+                                                                   u'type': 0}},
+             u'RunState': {u'RunIdChanged': {u'runId': ''}},
+             u'SettingsState': {u'AllSettingsChanged': {},
+                                u'AutoCountryChanged': {u'automatic': 0},
+                                u'CountryChanged': {u'code': 'US'},
+                                u'ProductNameChanged': {u'name': 'Bebop2-A044735'},
+                                u'ProductSerialHighChanged': {u'high': 'PI040384A'},
+                                u'ProductSerialLowChanged': {u'low': 'B6A044735'},
+                                u'ProductVersionChanged': {u'hardware': 'HW_02',
+                                                           u'software': '4.0.6'}},
+             u'WifiSettingsState': {u'outdoorSettingsChanged': {u'outdoor': 1}}},
+ u'follow_me': {'': {u'mode_info': {1: {u'improvements': 127,
+                                        u'missing_requirements': 63,
+                                        u'mode': 1},
+                                    2: {u'improvements': 127,
+                                        u'missing_requirements': 0,
+                                        u'mode': 2},
+                                    3: {u'improvements': 127,
+                                        u'missing_requirements': 0,
+                                        u'mode': 3}},
+                     u'state': {u'animation': 0,
+                                u'animation_available': 1,
+                                u'behavior': 0,
+                                u'mode': 0}}}}
+Received command : {'arg0': 0.0, 'args': {u'speedY': 0.0, u'speedX': 0.0, u'speedZ': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.SpeedChanged', 'listtype': 0, 'cmd': u'SpeedChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.0, 'args': {u'altitude': 0.0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AltitudeChanged', 'listtype': 0, 'cmd': u'AltitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0.002870301017537713, 'args': {u'yaw': 2.2479407787323, u'roll': 0.002870301017537713, u'pitch': 0.001266129082068801}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.AttitudeChanged', 'listtype': 0, 'cmd': u'AttitudeChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': -13, 'args': {u'tilt': -13, u'pan': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.CameraState.Orientation', 'listtype': 0, 'cmd': u'Orientation', 'class': u'CameraState', 'proj': u'ardrone3'}
+Received command : {'arg0': -61, 'args': {u'rssi': -61}, 'listtype_str': 'NONE', 'name': u'common.CommonState.WifiSignalChanged', 'listtype': 0, 'cmd': u'WifiSignalChanged', 'class': u'CommonState', 'proj': u'common'}
+Received command : {'arg0': 2, 'args': {u'motorError': 2}, 'listtype_str': 'NONE', 'name': u'ardrone3.SettingsState.MotorErrorLastErrorChanged', 'listtype': 0, 'cmd': u'MotorErrorLastErrorChanged', 'class': u'SettingsState', 'proj': u'ardrone3'}
+Received command : {'arg0': 0, 'args': {u'state': 0}, 'listtype_str': 'NONE', 'name': u'ardrone3.PilotingState.FlyingStateChanged', 'listtype': 0, 'cmd': u'FlyingStateChanged', 'class': u'PilotingState', 'proj': u'ardrone3'}
+Received command : {'arg0': 1, 'args': {u'enabled': 1}, 'listtype_str': 'NONE', 'name': u'ardrone3.MediaStreamingState.VideoEnableChanged', 'listtype': 0, 'cmd': u'VideoEnableChanged', 'class': u'MediaStreamingState', 'proj': u'ardrone3'}
+Sent command common.Calibration.MagnetoCalibration with args (1,)
+Received command : {'arg0': 1, 'args': {u'started': 1}, 'listtype_str': 'NONE', 'name': u'common.CalibrationState.MagnetoCalibrationStartedChanged', 'listtype': 0, 'cmd': u'MagnetoCalibrationStartedChanged', 'class': u'CalibrationState', 'proj': u'common'}
+Received command : {'arg0': 0, 'args': {u'xAxisCalibration': 0, u'calibrationFailed': 0, u'yAxisCalibration': 0, u'zAxisCalibration': 0}, 'listtype_str': 'NONE', 'name': u'common.CalibrationState.MagnetoCalibrationStateChanged', 'listtype': 0, 'cmd': u'MagnetoCalibrationStateChanged', 'class': u'CalibrationState', 'proj': u'common'}
+True
+Internal state :
+{u'ardrone3': {u'AntiflickeringState': Received command : {'arg0': 2, 'args': {u'axis': 2}, 'listtype_str': 'NONE', 'name': u'common.CalibrationState.MagnetoCalibrationAxisToCalibrateChanged', 'listtype': 0, 'cmd': u'MagnetoCalibrationAxisToCalibrateChanged', 'class': u'CalibrationState', 'proj': u'common'}
+{u'electricFrequencyChanged': {u'frequency': 0},
+                                        u'modeChanged': {u'mode': 0}},
+               u'CameraState': {u'Orientation': {u'pan': 0, u'tilt': -13},
+                                u'defaultCameraOrientation': {u'pan': 0,
+                                                              u'tilt': -13}},
+               u'GPSSettingsState': {u'GPSFixStateChanged': {u'fixed': 0},
+                                     u'HomeChanged': {u'altitude': 500.0,
+                                                      u'latitude': 500.0,
+                                                      u'longitude': 500.0},
+                                     u'HomeTypeChanged': {u'type': 1},
+                                     u'ReturnHomeDelayChanged': {u'delay': 30}},
+               u'GPSState': {u'HomeTypeAvailabilityChanged': {0: {u'available': 0,
+                                                                  u'type': 0},
+                                                              1: {u'available': 0,
+                                                                  u'type': 1},
+                                                              2: {u'available': 0,
+                                                                  u'type': 2},
+                                                              3: {u'available': 0,
+                                                                  u'type': 3}},
+                             u'HomeTypeChosenChanged': {u'type': 2}},
+               u'MediaRecordState': {u'PictureStateChangedV2': {u'error': 0,
+                                                                u'state': 0},
+                                     u'VideoStateChanged': {u'mass_storage_id': 255,
+                                                            u'state': 0},
+                                     u'VideoStateChangedV2': {u'error': 0,
+                                                              u'state': 0}},
+               u'MediaStreamingState': {u'VideoEnableChanged': {u'enabled': 1},
+                                        u'VideoStreamModeChanged': {u'mode': 0}},
+               u'NetworkSettingsState': {u'WifiSelectionChanged': {u'band': 0,
+                                                                   u'channel': 1,
+                                                                   u'type': 1},
+                                         u'wifiSecurity': {u'key': '',
+                                                           u'keyType': 0,
+                                                           u'type': 0},
+                                         u'wifiSecurityChanged': {u'type': 0}},
+               u'PROState': {u'Features': {u'features': 0}},
+               u'PictureSettingsState': {u'AutoWhiteBalanceChanged': {u'type': 0},
+                                         u'ExpositionChanged': {u'max': 1.5,
+                                                                u'min': -1.5,
+                                                                u'value': 0.0},
+                                         u'PictureFormatChanged': {u'type': 2},
+                                         u'SaturationChanged': {u'max': 100.0,
+                                                                u'min': -100.0,
+                                                                u'value': 0.0},
+                                         u'TimelapseChanged': {u'enabled': 0,
+                                                               u'interval': 8.0,
+                                                               u'maxInterval': 300.0,
+                                                               u'minInterval': 1.0},
+                                         u'VideoAutorecordChanged': {u'enabled': 0,
+                                                                     u'mass_storage_id': 0},
+                                         u'VideoFramerateChanged': {u'framerate': 0},
+                                         u'VideoRecordingModeChanged': {u'mode': 0},
+                                         u'VideoResolutionsChanged': {u'type': 0},
+                                         u'VideoStabilizationModeChanged': {u'mode': 0}},
+               u'PilotingSettingsState': {u'AbsolutControlChanged': {u'on': 0},
+                                          u'BankedTurnChanged': {u'state': 0},
+                                          u'MaxAltitudeChanged': {u'current': 30.0,
+                                                                  u'max': 150.0,
+                                                                  u'min': 0.5},
+                                          u'MaxDistanceChanged': {u'current': 2000.0,
+                                                                  u'max': 2000.0,
+                                                                  u'min': 10.0},
+                                          u'MaxTiltChanged': {u'current': 20.0,
+                                                              u'max': 35.0,
+                                                              u'min': 5.0},
+                                          u'NoFlyOverMaxDistanceChanged': {u'shouldNotFlyOver': 0}},
+               u'PilotingState': {u'AlertStateChanged': {u'state': 0},
+                                  u'AltitudeChanged': {u'altitude': 0.0},
+                                  u'AttitudeChanged': {u'pitch': 0.001266129082068801,
+                                                       u'roll': 0.002870301017537713,
+                                                       u'yaw': 2.2479407787323},
+                                  u'FlyingStateChanged': {u'state': 0},
+                                  u'GpsLocationChanged': {u'altitude': 500.0,
+                                                          u'altitude_accuracy': -90,
+                                                          u'latitude': 500.0,
+                                                          u'latitude_accuracy': -72,
+                                                          u'longitude': 500.0,
+                                                          u'longitude_accuracy': -108},
+                                  u'NavigateHomeStateChanged': {u'reason': 0,
+                                                                u'state': 0},
+                                  u'SpeedChanged': {u'speedX': 0.0,
+                                                    u'speedY': 0.0,
+                                                    u'speedZ': 0.0}},
+               u'SettingsState': {u'CPUID': {u'id': 'P742P2CX8500007251D0'},
+                                  u'MotorErrorLastErrorChanged': {u'motorError': 2},
+                                  u'MotorErrorStateChanged': {u'motorError': 0,
+                                                              u'motorIds': 0},
+                                  u'MotorFlightsStatusChanged': {u'lastFlightDuration': 28,
+                                                                 u'nbFlights': 131,
+                                                                 u'totalFlightDuration': 4007},
+                                  u'MotorSoftwareVersionChanged': {u'version': '6.3.R.4'},
+                                  u'P7ID': {u'serialID': 'P732P2CX8500007251D0'},
+                                  u'ProductGPSVersionChanged': {u'hardware': '',
+                                                                u'software': '2.01F'}},
+               u'SpeedSettingsState': {u'HullProtectionChanged': {u'present': 1},
+                                       u'MaxPitchRollRotationSpeedChanged': {u'current': 300.0,
+                                                                             u'max': 300.0,
+                                                                             u'min': 80.0},
+                                       u'MaxRotationSpeedChanged': {u'current': 100.0,
+                                                                    u'max': 200.0,
+                                                                    u'min': 10.0},
+                                       u'MaxVerticalSpeedChanged': {u'current': 1.0,
+                                                                    u'max': 6.0,
+                                                                    u'min': 0.5},
+                                       u'OutdoorChanged': {u'outdoor': 1}}},
+ u'common': {u'ARLibsVersionsState': {u'DeviceLibARCommandsVersion': {u'version': '4.0.0.4'}},
+             u'CalibrationState': {u'MagnetoCalibrationRequiredState': {u'required': 0},
+                                   u'MagnetoCalibrationStartedChanged': {u'started': 1},
+                                   u'MagnetoCalibrationStateChanged': {u'calibrationFailed': 0,
+                                                                       u'xAxisCalibration': 0,
+                                                                       u'yAxisCalibration': 0,
+                                                                       u'zAxisCalibration': 0}},
+             u'CameraSettingsState': {u'CameraSettingsChanged': {u'fov': 80.0,
+                                                                 u'panMax': 35.0,
+                                                                 u'panMin': -35.0,
+                                                                 u'tiltMax': 17.0,
+                                                                 u'tiltMin': -83.0}},
+             u'CommonState': {u'AllStatesChanged': {},
+                              u'BatteryStateChanged': {u'percent': 22},
+                              u'CurrentDateChanged': {u'date': '2017-05-19'},
+                              u'CurrentTimeChanged': {u'time': 'T022839+0000'},
+                              u'DeprecatedMassStorageContentChanged': {0: {u'mass_storage_id': 0,
+                                                                           u'nbCrashLogs': 0,
+                                                                           u'nbPhotos': 2,
+                                                                           u'nbPuds': 0,
+                                                                           u'nbVideos': 59}},
+                              u'MassStorageInfoStateListChanged': {0: {u'full': 1,
+                                                                       u'internal': 1,
+                                                                       u'mass_storage_id': 0,
+                                                                       u'plugged': 1,
+                                                                       u'size': 7338,
+                                                                       u'used_size': 7240}},
+                              u'MassStorageStateListChanged': {0: {u'mass_storage_id': 0,
+                                                                   u'name': 'internal'}},
+                              u'SensorsStatesListChanged': {0: {u'sensorName': 0,
+                                                                u'sensorState': 1},
+                                                            1: {u'sensorName': 1,
+                                                                u'sensorState': 1},
+                                                            2: {u'sensorName': 2,
+                                                                u'sensorState': 1},
+                                                            3: {u'sensorName': 3,
+                                                                u'sensorState': 1},
+                                                            4: {u'sensorName': 4,
+                                                                u'sensorState': 1},
+                                                            5: {u'sensorName': 5,
+                                                                u'sensorState': 1}},
+                              u'WifiSignalChanged': {u'rssi': -61}},
+             u'FlightPlanState': {u'AvailabilityStateChanged': {u'AvailabilityState': 0},
+                                  u'ComponentStateListChanged': {0: {u'State': 0,
+                                                                     u'component': 0},
+                                                                 1: {u'State': 1,
+                                                                     u'component': 1},
+                                                                 2: {u'State': 1,
+                                                                     u'component': 2},
+                                                                 3: {u'State': 1,
+                                                                     u'component': 3}}},
+             u'MavlinkState': {u'MavlinkFilePlayingStateChanged': {u'filepath': '/data/ftp/internal_000/flightplans/flightPlan.mavlink',
+                                                                   u'state': 1,
+                                                                   u'type': 0}},
+             u'RunState': {u'RunIdChanged': {u'runId': ''}},
+             u'SettingsState': {u'AllSettingsChanged': {},
+                                u'AutoCountryChanged': {u'automatic': 0},
+                                u'CountryChanged': {u'code': 'US'},
+                                u'ProductNameChanged': {u'name': 'Bebop2-A044735'},
+                                u'ProductSerialHighChanged': {u'high': 'PI040384A'},
+                                u'ProductSerialLowChanged': {u'low': 'B6A044735'},
+                                u'ProductVersionChanged': {u'hardware': 'HW_02',
+                                                           u'software': '4.0.6'}},
+             u'WifiSettingsState': {u'outdoorSettingsChanged': {u'outdoor': 1}}},
+ u'follow_me': {'': {u'mode_info': {1: {u'improvements': 127,
+                                        u'missing_requirements': 63,
+                                        u'mode': 1},
+                                    2: {u'improvements': 127,
+                                        u'missing_requirements': 0,
+                                        u'mode': 2},
+                                    3: {u'improvements': 127,
+                                        u'missing_requirements': 0,
+                                        u'mode': 3}},
+                     u'state': {u'animation': 0,
+                                u'animation_available': 1,
+                                u'behavior': 0,
+                                u'mode': 0}}}}
+Product disconnected !
