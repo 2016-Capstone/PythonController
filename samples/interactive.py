@@ -100,9 +100,12 @@ def input_processing(drone, key, stdscr):
             stdscr.refresh()
             time.sleep(2)
         #===================================
+    elif key == 104 or key == 'h': #home
+        hometype = drone.get_test_hometype(stdscr)
     else:
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
         #stdscr.refresh()
+        drone.trim()
         drone.hover()
 
 def print_battery(drone, stdscr):

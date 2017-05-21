@@ -470,6 +470,29 @@ class Device(object):
         except:
             return -1, -1, -1
 
+    def get_test_hometype(self, stdscr):
+        stdscr.clear()
+        stdscr.addstr(9, 13, '[ Can you run Return Home? ]')
+        stdscr.refresh()
+        script = ''
+        try:
+            values = self._state.get_value('ardrone3.GPSState.HomeTypeChosenChanged')
+            typ = values['type']
+
+            if typ == 0:
+                script = 'The drone will try to return to the take off position'
+            elif typ == 1:
+                script = 'The drone will try to return to the pilot position'
+            elif typ == 2:
+                script = 'The drone has not enough information, it will try to return to the first GPS fix'
+
+            stdscr.addstr(11, 16, script)
+            stdscr.refresh()
+            time.sleep(2)
+            return typ
+        except:
+            return -1
+
     def send_data(self, name, *args, **kwargs):
         """
         Send some command to the product.
@@ -601,7 +624,7 @@ class BebopDrone(Device):
         self.send_data('ardrone3.Piloting.Emergency')
 
     def move(self, flag, roll, pitch, yaw, gaz ):
-        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz, 0.0)
+        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz)
 
     def hover(self):
         self.move(1, 0, 0, 0, 0)
