@@ -164,7 +164,7 @@ def print_reset_home_position(drone, stdscr):
     stdscr.addstr(RST_HOME_PRINT_Y, RST_HOME_PRINT_X, rtn)
 
 def print_return_home_state(drone, stdscr):
-    state, reason = drone.get_return_home_state(drone, stdscr)
+    state, reason = drone.get_return_home_state()
     rtn = '>>realtime_return_home_state'
     rtn += '\n\tstate\t: '
     if state is 0:
