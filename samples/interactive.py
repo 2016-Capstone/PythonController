@@ -200,6 +200,8 @@ stdscr.refresh()
 try:
     drone.get_cali(stdscr)
     drone.get_mav_availability(stdscr)
+    drone.set_max_altitude(5)
+    drone.set_home_type()
     drone.trim()
     key = ''
 

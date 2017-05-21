@@ -17,7 +17,7 @@ MOVE_SPEED = 20
 
 TEST_LAT = 35.858593
 TEST_LON = 128.487131
-TEST_AT = 0.0
+TEST_AT = 1.0
 
 
 class State(object):
@@ -521,6 +521,18 @@ class Device(object):
             return at, lat, lon
         except:
             return -1, -1, -1
+
+    def set_max_altitude(self, alt):
+        try:
+            self.send_data('ardrone3.PilotingSettings.MaxAltitude', alt)
+        except:
+            return -1
+
+    def set_home_type(self):
+        try:
+            self.send_data('ardrone3.GPSSettings.HomeType', 1)
+        except:
+            return -1
 
     def send_data(self, name, *args, **kwargs):
         """
