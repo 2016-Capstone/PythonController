@@ -15,8 +15,8 @@ import arsdkparser
 MOVE_SPEED = 20
 
 
-TEST_LAT = 35.858593
-TEST_LON = 128.487131
+TEST_LAT = 35.859595
+TEST_LON = 128.487328
 TEST_AT = 1.0
 
 
@@ -541,6 +541,12 @@ class Device(object):
     def set_home_type(self):
         try:
             self.send_data('ardrone3.GPSSettings.HomeType', 1)
+        except:
+            return -1
+
+    def reset_node(self):
+        try:
+            return self.send_data('ardrone3.GPSSettings.ResetHome')
         except:
             return -1
 

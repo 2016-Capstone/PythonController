@@ -108,6 +108,7 @@ def input_processing(drone, key, stdscr):
             time.sleep(2)
     elif key == 104 or key == 'h': #home
         drone.send_contoller_gps()
+        drone.reset_node()
         hometype = drone.get_test_hometype(stdscr)
     elif key == 97 or key == 'a':
         if hometype is not 2:
