@@ -14,6 +14,12 @@ import arsdkparser
 
 MOVE_SPEED = 20
 
+
+TEST_LAT = 35.858593
+TEST_LON = 128.487131
+TEST_AT = 0.0
+
+
 class State(object):
     """
     Three level dictionnary to save the internal state of a Device.
@@ -450,6 +456,7 @@ class Device(object):
             at = values['altitude']
             lat = values['latitude']
             lon = values['longitude']
+            TEST_AT = at
             return at, lat, lon
         except:
             return -1, -1, -1
@@ -492,6 +499,28 @@ class Device(object):
             return typ
         except:
             return -1
+
+    def send_contoller_gps(self):
+        try:
+            return self.send_data('ardrone3.GPSSettings.SendControllerGPS', TEST_LAT, TEST_LON, TEST_AT, 0.5, 0.5)
+        except:
+            return -1
+
+    def go_node(self):
+        try:
+            return self.send_data('ardrone3.Piloting.NavigateHome', 1)
+        except:
+            return -1
+
+    def get_home_position(self):
+        try:
+            values = self._state.get_value('ardrone3.GPSSettingsState.HomeChanged')
+            at = values['altitude']
+            lat = values['latitude']
+            lon = values['longitude']
+            return at, lat, lon
+        except:
+            return -1, -1, -1
 
     def send_data(self, name, *args, **kwargs):
         """
@@ -601,7 +630,7 @@ class BebopDrone(Device):
         self.send_data('ardrone3.MediaStreaming.VideoEnable', 0)
 
     def trim(self):
-        self.send_data('ardrone3.Piloting.FlatTrim')
+        return self.send_data('ardrone3.Piloting.FlatTrim')
 
     def take_off(self):
         """
@@ -624,7 +653,7 @@ class BebopDrone(Device):
         self.send_data('ardrone3.Piloting.Emergency')
 
     def move(self, flag, roll, pitch, yaw, gaz ):
-        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz)
+        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz, 0.0)
 
     def hover(self):
         self.move(1, 0, 0, 0, 0)

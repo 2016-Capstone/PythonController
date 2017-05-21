@@ -31,7 +31,8 @@ ALT_PRINT_Y = 12
 ATT_PRINT_X = 5
 ATT_PRINT_Y = 14
 
-
+HOME_PRINT_X = 5
+HOME_PRINT_Y = 19
 
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
@@ -101,10 +102,13 @@ def input_processing(drone, key, stdscr):
             time.sleep(2)
         #===================================
     elif key == 104 or key == 'h': #home
+        drone.send_contoller_gps()
         hometype = drone.get_test_hometype(stdscr)
+        if hometype is not 2:
+            drone.go_node()
     else:
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
-        #stdscr.refresh()
+        stdscr.refresh()
         drone.trim()
         drone.hover()
 
@@ -136,6 +140,14 @@ def print_attitude(drone, stdscr):
     rtn += '\n\tyaw\t: ' + str(yaw)
     stdscr.addstr(ATT_PRINT_Y, ATT_PRINT_X, rtn)
     #stdscr.refresh()
+
+def print_home_position(drone, stdscr):
+    at, lat, lon = drone.get_home_position()
+    rtn = '>>realtime_home_position'
+    rtn += '\n\taltitude\t: ' + str(at)
+    rtn += '\n\tlatitude\t: ' + str(lat)
+    rtn += '\n\tlongitude\t: ' + str(lon)
+    stdscr.addstr(HOME_PRINT_Y, HOME_PRINT_X, rtn)
 
 print 'Searching for devices'
 
@@ -202,6 +214,7 @@ try:
         print_gps(drone, stdscr)
         print_altitude(drone, stdscr)
         print_attitude(drone, stdscr)
+        print_home_position(drone, stdscr)
 
         stdscr.refresh()
         time.sleep(0.025) #40MHz / 25ms
