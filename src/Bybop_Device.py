@@ -572,6 +572,9 @@ class BebopDrone(Device):
         # Deactivate video streaming
         self.send_data('ardrone3.MediaStreaming.VideoEnable', 0)
 
+    def trim(self):
+        self.send_data('ardrone3.Piloting.FlatTrim')
+
     def take_off(self):
         """
         Send a take off request to the Bebop Drone.
@@ -593,34 +596,34 @@ class BebopDrone(Device):
         self.send_data('ardrone3.Piloting.Emergency')
 
     def move(self, flag, roll, pitch, yaw, gaz ):
-        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz)
+        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz, 0.0)
 
     def hover(self):
-        self.move(True, 0, 0, 0, 0)
+        self.move(1, 0, 0, 0, 0)
 
     def up(self):
-        self.move(True, 0, 0, 0, MOVE_SPEED)
+        self.move(1, 0, 0, 0, MOVE_SPEED)
 
     def down(self):
-        self.move(True, 0, 0, 0, -MOVE_SPEED)
+        self.move(1, 0, 0, 0, -MOVE_SPEED)
 
     def side_left(self):
-        self.move(True, -MOVE_SPEED, 0, 0, 0)
+        self.move(1, -MOVE_SPEED, 0, 0, 0)
 
     def side_right(self):
-        self.move(True, -MOVE_SPEED, 0, 0, 0)
+        self.move(1, -MOVE_SPEED, 0, 0, 0)
 
     def forward(self):
-        self.move(True, 0, MOVE_SPEED, 0, 0)
+        self.move(1, 0, MOVE_SPEED, 0, 0)
 
     def rear(self):
-        self.move(True, 0, -MOVE_SPEED, 0, 0)
+        self.move(1, 0, -MOVE_SPEED, 0, 0)
 
     def roll_left(self):
-        self.move(True, 0, 0, -MOVE_SPEED, 0)
+        self.move(1, 0, 0, -MOVE_SPEED, 0)
 
     def roll_right(self):
-        self.move(True, 0, 0, MOVE_SPEED, 0)
+        self.move(1, 0, 0, MOVE_SPEED, 0)
 
 
 class JumpingSumo(Device):
