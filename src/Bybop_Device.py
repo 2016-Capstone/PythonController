@@ -12,6 +12,8 @@ from Bybop_Discovery import *
 from Bybop_Connection import *
 import arsdkparser
 
+MOVE_SPEED = 20
+
 class State(object):
     """
     Three level dictionnary to save the internal state of a Device.
@@ -77,7 +79,7 @@ class State(object):
                 self._waitlist[name] = {}
             self._waitlist[name][wid] = event
 
-        res =  event.wait(timeout)
+        res = event.wait(timeout)
 
         with self._lock:
             if res:
@@ -154,7 +156,6 @@ class State(object):
             pr_cl[cmd][key] = copy.deepcopy(args)
             self._signal_waiting(pr, cl, cmd)
 
-
     def get_value(self, name):
         """
         Get the current value of a command.
@@ -209,7 +210,8 @@ class Device(object):
     initialization. It should not be used directly.
     """
 
-    def __init__(self, ip, c2d_port, d2c_port, ackBuffer=-1, nackBuffer=-1, urgBuffer=-1, cmdBuffers=[], skipCommonInit=False, verbose=False):
+    def __init__(self, ip, c2d_port, d2c_port, ackBuffer=-1, nackBuffer=-1, urgBuffer=-1, cmdBuffers=[],
+                 skipCommonInit=False, verbose=False):
         """
         Create and start a new Device.
 
@@ -307,7 +309,10 @@ class Device(object):
         except:
             return 0
 
-    def get_cali(self):
+    def get_cali(self, stdscr):
+        stdscr.clear()
+        stdscr.addstr(9, 13, '[ Do you need Cali? ]')
+        stdscr.refresh()
         """
         Get the current cali state.
         """
@@ -316,54 +321,149 @@ class Device(object):
         y = 1
         z = 1
         try:
-           # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['xaxiscalibration'] + '\n'
-           # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['yaxiscalibration'] + '\n'
-           # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['zaxiscalibration'] + '\n'
-           # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['calibrationfailed']
-           # rtn = self.send_data('common', 'CalibrationState', 'MagnetoCalibrarionStateChanged')
-           cali_required = self._state.get_value('common.CalibrationState.MagnetoCalibrationRequiredState')['required']
-           #self.send_data('common.Calibration.MagnetoCalibration', 1)
-           #rtn = self.wait_answer('common.CalibrationState.MagnetoCalibrationStateChanged')
-#================================================
-           if cali_required == 1:
+            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['xaxiscalibration'] + '\n'
+            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['yaxiscalibration'] + '\n'
+            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['zaxiscalibration'] + '\n'
+            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['calibrationfailed']
+            # rtn = self.send_data('common', 'CalibrationState', 'MagnetoCalibrarionStateChanged')
+            cali_required = self._state.get_value('common.CalibrationState.MagnetoCalibrationRequiredState')['required']
+            # self.send_data('common.Calibration.MagnetoCalibration', 1)
+            # rtn = self.wait_answer('common.CalibrationState.MagnetoCalibrationStateChanged')
+            # ================================================
+            if cali_required == 1:
                 self.send_data('common.Calibration.MagnetoCalibration', 1)
-           elif cali_required == 0:
-               print 'Cali not required'
-               return
-           
-           self.wait_answer('common.CalibrationState.MagnetoCalibrationStateChanged')
+            elif cali_required == 0:
+                stdscr.addstr(10,13,'Cali not required')
+                stdscr.refresh()
+                time.sleep(2)
+                return
 
-           cnt = 0
-           print 'Go Calibration...'
-           while True :
-               if x== 1 and self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')['xAxisCalibration'] == 1:
-                   print 'x Axis done'
-                   x = 0
-               if y==1 and self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')['yAxisCalibration']  == 1:
-                   print 'y Axis done'
-                   y = 0
-               if z==1 and self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')['zAxisCalibration'] == 1:
-                   print 'z Axis done'
-                   z = 0
-               if x == 0 and z == 0 and y == 0:
-                   break
-               #rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')['calibrationFailed']
-    
-           return rtn
+            self.wait_answer('common.CalibrationState.MagnetoCalibrationStateChanged')
+
+            cnt = 0
+            stdscr.clear()
+            stdscr.addstr(10, 13, 'Go calibration...')
+            stdscr.refresh()
+            rtn = ''
+            while True:
+                if self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')[
+                    'xAxisCalibration'] == 1:
+                    rtn += '+ x Axis done(ROLL)'
+                    x = 0
+                else:
+                    rtn += '- x Axis required(ROLL)'
+                if self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')[
+                    'yAxisCalibration'] == 1:
+                    rtn += '\n\t+ y Axis done(PITCH)'
+                    y = 0
+                else:
+                    rtn += '\n\t- y Axis required(PITCH)'
+                if self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')[
+                    'zAxisCalibration'] == 1:
+                    rtn += '\n\t+ z Axis done(YAW)'
+                    z = 0
+                else:
+                    rtn += '\n\t- z Axis required(YAW)'
+                stdscr.addstr(12, 15, rtn)
+                stdscr.refresh()
+                time.sleep(1)
+                if x == 0 and z == 0 and y == 0:
+                    stdscr.clear()
+                    stdscr.addstr(10, 13, 'Cali DONE!!')
+                    stdscr.refresh()
+                    time.sleep(2)
+                    break
+                    # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')['calibrationFailed']
+
+            return rtn
         except:
             return 0
-   
-    def get_mav_availability(self):
+
+    def get_mav_availability(self, stdscr):
+        stdscr.clear()
+        stdscr.addstr(9, 13, '[ Is Mavlink file available? ]')
+        stdscr.refresh()
+        script = ''
 
         try:
             rtn = self._state.get_value('common.FlightPlanState.AvailabilityStateChanged')['AvailabilityState']
             if rtn == 1:
-                print 'FlightPlane file is available'
+                stdscr.addstr(10, 15, '+ FlightPlan is available')
             else:
-                print 'FlightPlane is not available'
+                stdscr.addstr(10, 15, '- FlightPlan is not available')
+            stdscr.refresh()
+            time.sleep(2)
             return rtn
         except:
             return 0
+#===Is Work?=====
+    def get_mav_state(self, stdscr):
+        stdscr.clear()
+        stdscr.addstr(9,13,'[ Can you run Mavlink? ]')
+        stdscr.refresh()
+        script = ''
+
+        try:
+            self.send_data('common.Common.AllStates')
+            self.wait_answer('common.CommonState.AllStatesChanged')
+            values = self._state.get_value('common.FlightPlanState.ComponentStateListChanged')
+            #gps, cali, mav, takeoff = self._state.get_value('common.FlightPlanState.ComponentStateListChanged')
+            gps_state = values[0]['State']
+            cali_state = values[1]['State']
+            mav_state = values[2]['State']
+            takeoff_state = values[3]['State']
+
+            if gps_state == 1:
+                script += '+ GPS get ready\n\n'
+            elif gps_state == 0:
+                script += '- GPS is not ready\n\n'
+            if cali_state == 1:
+                script += '\t\t+ Cali get ready\n\n'
+            elif cali_state == 0:
+                script += '\t\t- Cali is not ready\n\n'
+            if mav_state == 1:
+                script += '\t\t+ Mav get ready\n\n'
+            elif mav_state == 0:
+                script += '\t\t- Mav is not ready\n\n'
+            if takeoff_state == 1:
+                script += '\t\t+ Takeoff get ready\n\n'
+            elif takeoff_state == 0:
+                script += '\t\t- Takeoff is not ready\n\n'
+
+
+            stdscr.addstr(11, 16, script)
+            stdscr.refresh()
+            time.sleep(1)
+
+            if (gps_state * cali_state * mav_state * takeoff_state) == 1:
+                return True
+            else:
+                return False
+        except Exception as e:
+            return False
+
+    def get_gps(self):
+        """
+        Get the current position.
+        """
+        try:
+            at, lat, lon = self._state.get_value('ardrone3.PilotingState.GpsLocationChanged')['altitude', 'latitude', 'longitude']
+            return at, lat, lon
+        except:
+            return -1, -1, -1
+
+    def get_altitude(self):
+        try:
+            return self._state.get_value('ardrone3.PilotingState.AltitudeChanged')['altitude']
+        except:
+            return -1
+
+    def get_attitude(self):
+        try:
+            pitch, roll, yaw = self._state.get_value('ardrone3.PilotingState.AttitudeChanged')['pitch', 'roll', 'yaw']
+            return pitch, roll, yaw
+        except:
+            return -1, -1, -1
 
     def send_data(self, name, *args, **kwargs):
         """
@@ -385,7 +485,7 @@ class Device(object):
         except CommandError as e:
             print 'Bad command !' + str(e)
             return NetworkStatus.ERROR
-        bufno=-1
+        bufno = -1
         if buf == arsdkparser.ArCmdBufferType.NON_ACK:
             bufno = self._nackBuffer
             datatype = Bybop_NetworkAL.DataType.DATA
@@ -403,7 +503,7 @@ class Device(object):
         retries = kwargs['retries'] if 'retries' in kwargs else 5
         timeout = kwargs['timeout'] if 'timeout' in kwargs else 0.15
 
-        status = self._network.send_data(bufno, cmd, datatype, timeout=timeout, tries=retries+1)
+        status = self._network.send_data(bufno, cmd, datatype, timeout=timeout, tries=retries + 1)
 
         if status == 0 and self._verbose:
             print 'Sent command %s.%s.%s with args %s' % (pr, cl, cm, str(args))
@@ -465,7 +565,8 @@ class BebopDrone(Device):
         - c2d_port : The remote port (on which we will send data)
         - d2c_port : The local port (on which we will read data)
         """
-        super(BebopDrone, self).__init__(ip, c2d_port, d2c_port, ackBuffer=11, nackBuffer=10, urgBuffer=12, cmdBuffers=[127, 126])
+        super(BebopDrone, self).__init__(ip, c2d_port, d2c_port, ackBuffer=11, nackBuffer=10, urgBuffer=12,
+                                         cmdBuffers=[127, 126])
 
     def _init_product(self):
         # Deactivate video streaming
@@ -490,6 +591,37 @@ class BebopDrone(Device):
         An emergency request shuts down the motors.
         """
         self.send_data('ardrone3.Piloting.Emergency')
+
+    def move(self, flag, roll, pitch, yaw, gaz ):
+        self.send_data('ardrone3.Piloting.PCMD', flag, roll, pitch, yaw, gaz)
+
+    def hover(self):
+        self.move(True, 0, 0, 0, 0)
+
+    def up(self):
+        self.move(True, 0, 0, 0, MOVE_SPEED)
+
+    def down(self):
+        self.move(True, 0, 0, 0, -MOVE_SPEED)
+
+    def side_left(self):
+        self.move(True, -MOVE_SPEED, 0, 0, 0)
+
+    def side_right(self):
+        self.move(True, -MOVE_SPEED, 0, 0, 0)
+
+    def forward(self):
+        self.move(True, 0, MOVE_SPEED, 0, 0)
+
+    def rear(self):
+        self.move(True, 0, -MOVE_SPEED, 0, 0)
+
+    def roll_left(self):
+        self.move(True, 0, 0, -MOVE_SPEED, 0)
+
+    def roll_right(self):
+        self.move(True, 0, 0, MOVE_SPEED, 0)
+
 
 class JumpingSumo(Device):
     def __init__(self, ip, c2d_port, d2c_port):
@@ -548,7 +680,6 @@ class JumpingSumo(Device):
         return self.send_data('jpsumo.Animations.Jump', jump_type)
 
 
-
 class SkyController(Device):
     def __init__(self, ip, c2d_port, d2c_port):
         """
@@ -561,7 +692,8 @@ class SkyController(Device):
         - c2d_port : The remote port (on which we will send data)
         - d2c_port : The local port (on which we will read data)
         """
-        super(SkyController, self).__init__(ip, c2d_port, d2c_port, ackBuffer=11, nackBuffer=10, urgBuffer=12, cmdBuffers=[127, 126], skipCommonInit=True)
+        super(SkyController, self).__init__(ip, c2d_port, d2c_port, ackBuffer=11, nackBuffer=10, urgBuffer=12,
+                                            cmdBuffers=[127, 126], skipCommonInit=True)
 
     def _init_product(self):
         self.send_data('skyctrl.Settings.AllSettings')

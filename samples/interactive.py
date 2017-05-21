@@ -6,50 +6,132 @@ import curses
 import code
 import readline
 import rlcompleter
+import time
 
 sys.path.append('../src')
 
 from Bybop_Discovery import *
 import Bybop_Device
 
+BAT_PRINT_X = 5
+BAT_PRINT_Y = 2
+
+KEY_PRINT_X = 5
+KEY_PRINT_Y = 3
+
+MAV_PRINT_X = 5
+MAV_PRINT_Y = 5
+
+GPS_PRINT_X = 5
+GPS_PRINT_Y = 7
+
+ALT_PRINT_X = 5
+ALT_PRINT_Y = 12
+
+ATT_PRINT_X = 5
+ATT_PRINT_Y = 14
+
+
+
+def log(stdscr, str):
+    stdscr.addstr(10, 20, '[DEBUG] : ' + str)
+
 def input_processing(drone, key, stdscr):
-    
-    if key == 65 or key == curses.KEY_UP:
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 66 or key == curses.KEY_DOWN:
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 68 or key == curses.KEY_LEFT:
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 67 or key == curses.KEY_RIGHT:
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 101 or key == 'e':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 116 or key == 't':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 32 or key == '  ':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 114 or key == 'r':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 102 or key == 'f':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 100 or key == 'd':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
-    elif key == 103 or key == 'g':
-        stdscr.addstr(5, 10, str(key) + ' pressed')
-        stdscr.refresh()
+    if key == 65 or key == curses.KEY_UP: #UP
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'UP')
+        #stdscr.refresh()
+        drone.up()
+    elif key == 66 or key == curses.KEY_DOWN: #DOWN
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'DOWN')
+        #stdscr.refresh()
+        drone.down()
+    elif key == 68 or key == curses.KEY_LEFT: #SIDE LEFT
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'SIDE LEFT')
+        #stdscr.refresh()
+        drone.side_left()
+    elif key == 67 or key == curses.KEY_RIGHT: #SIDE RIGHT
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'SIDE RIGHT')
+        #stdscr.refresh()
+        drone.side_right()
+    elif key == 101 or key == 'e': #EMERGENCY
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'EMERGENCY')
+        #stdscr.refresh()
+        drone.emergency()
+        time.sleep(3)
+    elif key == 116 or key == 't': #TAKEOFF
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'TAKE OFF')
+        #stdscr.refresh()
+        drone.take_off()
+    elif key == 32 or key == '  ': #LAND
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'LAND')
+        #stdscr.refresh()
+        drone.land()
+    elif key == 114 or key == 'r': #FORWARD
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'FORWARD')
+        #stdscr.refresh()
+        drone.forward()
+    elif key == 102 or key == 'f': #REAR
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'REAR')
+        #stdscr.refresh()
+        drone.rear()
+    elif key == 100 or key == 'd': #ROLL LEFT
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'ROLL LEFT')
+        #stdscr.refresh()
+        drone.roll_left()
+    elif key == 103 or key == 'g': #ROLL RIGHT
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'ROLL RIGHT')
+        #stdscr.refresh()
+        drone.roll_right()
+        #===========JUMPSNACK===============
+    elif key == 109 or key == 'm': #Mav Mode
+        cnt = 1
+        while drone.get_mav_state(stdscr) is not True:
+            if cnt == 3:
+                stdscr.clear()
+                stdscr.addstr(MAV_PRINT_Y, MAV_PRINT_X, 'MAV Doesnt work :(')
+                stdscr.refresh()
+                time.sleep(2)
+                break
+            cnt = cnt +1
+            stdscr.clear()
+        if(cnt < 3):
+            stdscr.clear()
+            stdscr.addstr(MAV_PRINT_Y, MAV_PRINT_X, 'MAV WORKS GOOD!!!')
+            stdscr.refresh()
+            time.sleep(2)
+        #===================================
     else:
-        stdscr.addstr(5, 10,'None : ' + str(key) + ' pressed')
-        stdscr.refresh()
+        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
+        #stdscr.refresh()
+
+def print_battery(drone, stdscr):
+    bat = drone.get_battery()
+    stdscr.addstr(BAT_PRINT_Y, BAT_PRINT_X, 'battery : ' + str(bat))
+
+def print_gps(drone, stdscr):
+    at, lat, lon = drone.get_gps();
+    rtn = '>>current_gps'
+    rtn += '\n\taltitude\t: ' + str(at)
+    rtn += '\n\tlatitude\t: ' + str(lat)
+    rtn += '\n\tlongitude\t: ' + str(lon)
+    stdscr.addstr(GPS_PRINT_Y, GPS_PRINT_X, rtn)
+    #stdscr.refresh()
+
+def print_altitude(drone, stdscr):
+    alt = drone.get_altitude()
+    rtn = '>>'
+    rtn += 'realtime_altitde\t: ' + str(alt)
+    stdscr.addstr(ALT_PRINT_Y, ALT_PRINT_X, rtn)
+    #stdscr.refresh()
+
+def print_attitude(drone, stdscr):
+    pitch, roll, yaw = drone.get_attitude()
+    rtn = '>>realtime_attitude'
+    rtn += '\n\tpitch\t: ' + str(pitch)
+    rtn += '\n\troll\t: ' + str(roll)
+    rtn += '\n\tyaw\t: ' + str(yaw)
+    stdscr.addstr(ATT_PRINT_Y, ATT_PRINT_X, rtn)
+    #stdscr.refresh()
 
 print 'Searching for devices'
 
@@ -88,25 +170,40 @@ readline.parse_and_bind("tab: complete")
 shell = code.InteractiveConsole(vars)
 
 #shell.interact()
-drone.get_cali()
-drone.get_mav_availability()
+
 
 stdscr = curses.initscr()
 curses.cbreak()
+stdscr.nodelay(1)
 stdscr.keypad(1)
 
-stdscr.addstr(5,5,'welcome')
+stdscr.addstr(2,2,'welcome')
 stdscr.refresh()
 
-key = ''
 
 try:
+    drone.get_cali(stdscr)
+    drone.get_mav_availability(stdscr)
+
+    key = ''
+
+
     while key != ord('q'):
+        stdscr.clear()
+
         key = stdscr.getch()
         input_processing(drone, key, stdscr)
 
-except (KeyboardInterrupt, SystemExit):
-    print 'Root Exception'
+        print_battery(drone, stdscr)
+        print_gps(drone, stdscr)
+        print_altitude(drone, stdscr)
+        print_attitude(drone, stdscr)
+
+        stdscr.refresh()
+        time.sleep(0.025) #40MHz / 25ms
+
+except (KeyboardInterrupt, SystemExit, Exception) as e:
+    print '[EXCEPTION] ' + str(e)
     drone.stop()
     curses.endwin()
     raise
