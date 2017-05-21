@@ -460,7 +460,10 @@ class Device(object):
 
     def get_attitude(self):
         try:
-            pitch, roll, yaw = self._state.get_value('ardrone3.PilotingState.AttitudeChanged')['pitch', 'roll', 'yaw']
+            values = self._state.get_value('ardrone3.PilotingState.AttitudeChanged')
+            pitch = values['pitch']
+            roll = values['roll']
+            yaw = values['yaw']
             return pitch, roll, yaw
         except:
             return -1, -1, -1
