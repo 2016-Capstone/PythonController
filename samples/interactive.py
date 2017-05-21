@@ -34,10 +34,17 @@ ATT_PRINT_Y = 14
 HOME_PRINT_X = 5
 HOME_PRINT_Y = 19
 
+RST_HOME_PRINT_X = 5
+RST_HOME_PRINT_Y = 24
+
+HOME_STATE_PRINT_X = 5
+HOME_STATE_PRINT_Y = 29
+
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
 
 def input_processing(drone, key, stdscr):
+    hometype = 2
     if key == 65 or key == curses.KEY_UP: #UP
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'UP')
         #stdscr.refresh()
@@ -83,7 +90,6 @@ def input_processing(drone, key, stdscr):
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'ROLL RIGHT')
         #stdscr.refresh()
         drone.roll_right()
-        #===========JUMPSNACK===============
     elif key == 109 or key == 'm': #Mav Mode
         cnt = 1
         while drone.get_mav_state(stdscr) is not True:
@@ -100,10 +106,10 @@ def input_processing(drone, key, stdscr):
             stdscr.addstr(MAV_PRINT_Y, MAV_PRINT_X, 'MAV WORKS GOOD!!!')
             stdscr.refresh()
             time.sleep(2)
-        #===================================
     elif key == 104 or key == 'h': #home
         drone.send_contoller_gps()
         hometype = drone.get_test_hometype(stdscr)
+    elif key == 97 or key == 'a':
         if hometype is not 2:
             drone.go_node()
     else:
@@ -148,6 +154,49 @@ def print_home_position(drone, stdscr):
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
     stdscr.addstr(HOME_PRINT_Y, HOME_PRINT_X, rtn)
+
+def print_reset_home_position(drone, stdscr):
+    at, lat, lon = drone.get_reset_home_position()
+    rtn = '>>realtime_reset_home_position'
+    rtn += '\n\taltitude\t: ' + str(at)
+    rtn += '\n\tlatitude\t: ' + str(lat)
+    rtn += '\n\tlongitude\t: ' + str(lon)
+    stdscr.addstr(RST_HOME_PRINT_Y, RST_HOME_PRINT_X, rtn)
+
+def print_return_home_state(drone, stdscr):
+    state, reason = drone.get_return_home_state(drone, stdscr)
+    rtn = '>>realtime_return_home_state'
+    rtn += '\n\tstate\t: '
+    if state is 0:
+        rtn += 'available'
+    elif state is 1:
+        rtn += 'inProgress'
+    elif state is 2:
+        rtn += 'unavailable'
+    elif state is 3:
+        rtn += 'pending (Navigate home has been received, but its process is pending)'
+    else:
+        rtn += 'Not Yet'
+
+    rtn += '\n\treason\t: '
+    if reason is 0:
+        rtn += 'userRequest'
+    elif reason is 1:
+        rtn += 'connectionLost'
+    elif reason is 2:
+        rtn += 'lowBattery'
+    elif reason is 3:
+        rtn += 'finished'
+    elif reason is 4:
+        rtn += 'stopped'
+    elif reason is 5:
+        rtn += 'disabled'
+    elif reason is 6:
+        rtn += 'enabled'
+    else :
+        rtn += 'Not Yet'
+
+    stdscr.addstr(HOME_STATE_PRINT_Y, HOME_STATE_PRINT_X, rtn)
 
 print 'Searching for devices'
 
@@ -217,6 +266,8 @@ try:
         print_altitude(drone, stdscr)
         print_attitude(drone, stdscr)
         print_home_position(drone, stdscr)
+        print_reset_home_position(drone, stdscr)
+        print_return_home_state(drone, stdscr)
 
         stdscr.refresh()
         time.sleep(0.025) #40MHz / 25ms

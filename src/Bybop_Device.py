@@ -522,6 +522,16 @@ class Device(object):
         except:
             return -1, -1, -1
 
+    def get_reset_home_position(self):
+        try:
+            values = self._state.get_value('ardrone3.GPSSettingsState.ResetHomeChanged')
+            at = values['altitude']
+            lat = values['latitude']
+            lon = values['longitude']
+            return at, lat, lon
+        except:
+            return -1, -1, -1
+
     def set_max_altitude(self, alt):
         try:
             self.send_data('ardrone3.PilotingSettings.MaxAltitude', alt)
@@ -533,6 +543,15 @@ class Device(object):
             self.send_data('ardrone3.GPSSettings.HomeType', 1)
         except:
             return -1
+
+    def get_return_home_state(self):
+        try:
+            values = self._state.get_value('ardrone3.PilotingState.NavigateHomeStateChanged')
+            reason = values['reason']
+            state = values['state']
+            return state, reason
+        except:
+            return -1, -1
 
     def send_data(self, name, *args, **kwargs):
         """
