@@ -109,7 +109,7 @@ def input_processing(drone, key, stdscr):
     else:
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
         stdscr.refresh()
-        drone.trim()
+        #drone.trim()
         drone.hover()
 
 def print_battery(drone, stdscr):

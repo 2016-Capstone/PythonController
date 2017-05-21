@@ -668,7 +668,7 @@ class BebopDrone(Device):
         self.move(1, -MOVE_SPEED, 0, 0, 0)
 
     def side_right(self):
-        self.move(1, -MOVE_SPEED, 0, 0, 0)
+        self.move(1, MOVE_SPEED, 0, 0, 0)
 
     def forward(self):
         self.move(1, 0, MOVE_SPEED, 0, 0)
