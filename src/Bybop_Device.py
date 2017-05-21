@@ -181,10 +181,10 @@ class State(object):
         with self._lock:
             pr_cl = self._getcldic(pr, cl)
             if pr_cl is None:
-                print 'ERROR : State.get_value pr_cl is None'
+                #print 'ERROR : State.get_value pr_cl is None'
                 ret = None
             elif not cmd in pr_cl:
-                print 'ERROR : State.get_value cmd not in pr_cl'
+                #print 'ERROR : State.get_value cmd not in pr_cl'
                 ret = None
             else:
                 ret = copy.deepcopy(pr_cl[cmd])
@@ -538,6 +538,7 @@ class Device(object):
         except:
             return -1
 
+    def set_home_type(self):
     def set_home_type(self):
         try:
             self.send_data('ardrone3.GPSSettings.HomeType', 1)
