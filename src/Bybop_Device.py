@@ -346,20 +346,18 @@ class Device(object):
             stdscr.refresh()
             rtn = ''
             while True:
-                if self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')[
-                    'xAxisCalibration'] == 1:
+                values = self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')
+                if values['xAxisCalibration'] == 1:
                     rtn += '+ x Axis done(ROLL)'
                     x = 0
                 else:
                     rtn += '- x Axis required(ROLL)'
-                if self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')[
-                    'yAxisCalibration'] == 1:
+                if values['yAxisCalibration'] == 1:
                     rtn += '\n\t+ y Axis done(PITCH)'
                     y = 0
                 else:
                     rtn += '\n\t- y Axis required(PITCH)'
-                if self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')[
-                    'zAxisCalibration'] == 1:
+                if values['zAxisCalibration'] == 1:
                     rtn += '\n\t+ z Axis done(YAW)'
                     z = 0
                 else:
@@ -396,6 +394,7 @@ class Device(object):
             return rtn
         except:
             return 0
+
 #===Is Work?=====
     def get_mav_state(self, stdscr):
         stdscr.clear()
@@ -447,7 +446,10 @@ class Device(object):
         Get the current position.
         """
         try:
-            at, lat, lon = self._state.get_value('ardrone3.PilotingState.GpsLocationChanged')['altitude', 'latitude', 'longitude']
+            values = self._state.get_value('ardrone3.PilotingState.GpsLocationChanged')
+            at = values['altitude']
+            lat = values['latitude']
+            lon = values['longitude']
             return at, lat, lon
         except:
             return -1, -1, -1
