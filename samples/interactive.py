@@ -38,7 +38,7 @@ RST_HOME_PRINT_X = 5
 RST_HOME_PRINT_Y = 24
 
 HOME_STATE_PRINT_X = 5
-HOME_STATE_PRINT_Y = 29
+HOME_STATE_PRINT_Y = 0
 
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
