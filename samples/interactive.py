@@ -37,8 +37,8 @@ HOME_PRINT_Y = 19
 RST_HOME_PRINT_X = 5
 RST_HOME_PRINT_Y = 24
 
-HOME_STATE_PRINT_X = 5
-HOME_STATE_PRINT_Y = 0
+HOME_STATE_PRINT_X = 10
+HOME_STATE_PRINT_Y = 24
 
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
@@ -166,7 +166,7 @@ def print_reset_home_position(drone, stdscr):
 def print_return_home_state(drone, stdscr):
     state, reason = drone.get_return_home_state()
     rtn = '>>realtime_return_home_state'
-    rtn += '\n\tstate\t: '
+    rtn += '\n\t\t\tstate\t: '
     if state is 0:
         rtn += 'available'
     elif state is 1:
@@ -178,7 +178,7 @@ def print_return_home_state(drone, stdscr):
     else:
         rtn += 'Not Yet'
 
-    rtn += '\n\treason\t: '
+    rtn += '\n\t\t\treason\t: '
     if reason is 0:
         rtn += 'userRequest'
     elif reason is 1:
