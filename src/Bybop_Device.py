@@ -539,7 +539,6 @@ class Device(object):
             return -1
 
     def set_home_type(self):
-    def set_home_type(self):
         try:
             self.send_data('ardrone3.GPSSettings.HomeType', 1)
         except:
