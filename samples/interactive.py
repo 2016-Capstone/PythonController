@@ -117,13 +117,13 @@ def input_processing(drone, key, stdscr):
         time.sleep(1)
     elif key == 97 or key == 'a':
         drone.go_node()
-        rtn = 'Processing'
+        rtn = 'Processing...'
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             stdscr.clear()
-            rtn += '.'
             stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, rtn)
             stdscr.refresh()
+            time.sleep(1)
         IS_BACK_HOME_IN_PROCESS = True
     else:
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
