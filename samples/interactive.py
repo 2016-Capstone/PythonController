@@ -34,11 +34,13 @@ ATT_PRINT_Y = 14
 HOME_PRINT_X = 5
 HOME_PRINT_Y = 19
 
-RST_HOME_PRINT_X = 5
-RST_HOME_PRINT_Y = 24
+#RST_HOME_PRINT_X = 5
+#RST_HOME_PRINT_Y = 24
 
 HOME_STATE_PRINT_X = 5
-HOME_STATE_PRINT_Y = 4
+HOME_STATE_PRINT_Y = 24
+
+IS_BACK_HOME_IN_PROCESS = True
 
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
@@ -115,6 +117,14 @@ def input_processing(drone, key, stdscr):
         time.sleep(1)
     elif key == 97 or key == 'a':
         drone.go_node()
+        rtn = 'Processing'
+        global IS_BACK_HOME_IN_PROCESS
+        while IS_BACK_HOME_IN_PROCESS:
+            stdscr.clear()
+            rtn += '.'
+            stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, rtn)
+            stdscr.refresh()
+        IS_BACK_HOME_IN_PROCESS = True
     else:
         stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
         stdscr.refresh()
@@ -157,7 +167,7 @@ def print_home_position(drone, stdscr):
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
     stdscr.addstr(HOME_PRINT_Y, HOME_PRINT_X, rtn)
-
+"""
 def print_reset_home_position(drone, stdscr):
     at, lat, lon = drone.get_reset_home_position()
     rtn = '>>realtime_reset_home_position'
@@ -165,6 +175,7 @@ def print_reset_home_position(drone, stdscr):
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
     stdscr.addstr(RST_HOME_PRINT_Y, RST_HOME_PRINT_X, rtn)
+"""
 
 def print_return_home_state(drone, stdscr):
     state, reason = drone.get_return_home_state()
@@ -190,6 +201,8 @@ def print_return_home_state(drone, stdscr):
         rtn += 'lowBattery'
     elif reason is 3:
         rtn += 'finished'
+        global IS_BACK_HOME_IN_PROCESS
+        IS_BACK_HOME_IN_PROCESS = False
     elif reason is 4:
         rtn += 'stopped'
     elif reason is 5:
@@ -245,10 +258,6 @@ curses.cbreak()
 stdscr.nodelay(1)
 stdscr.keypad(1)
 
-stdscr.addstr(2,2,'welcome')
-stdscr.refresh()
-
-
 try:
     drone.get_cali(stdscr)
     drone.get_mav_availability(stdscr)
@@ -269,7 +278,7 @@ try:
         print_altitude(drone, stdscr)
         print_attitude(drone, stdscr)
         print_home_position(drone, stdscr)
-        print_reset_home_position(drone, stdscr)
+        #print_reset_home_position(drone, stdscr)
         print_return_home_state(drone, stdscr)
 
         stdscr.refresh()
