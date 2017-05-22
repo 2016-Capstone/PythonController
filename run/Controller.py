@@ -61,7 +61,6 @@ def get_socket():
         return c_socket
 
 def input_processing(drone, key, stdscr):
-    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + "\t")
     hometype = 2
     if key == 65 or key == curses.KEY_UP: #UP
         #stdscr.refresh()
