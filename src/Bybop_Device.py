@@ -315,6 +315,12 @@ class Device(object):
         except:
             return 0
 
+    def set_cali(self):
+        try:
+            return self.send_data('common.Calibration.MagnetoCalibration', 1)
+        except:
+            return False
+
     def get_cali(self, stdscr):
         stdscr.clear()
         stdscr.addstr(9, 13, '[ Do you need Cali? ]')
@@ -327,47 +333,42 @@ class Device(object):
         y = 1
         z = 1
         try:
-            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['xaxiscalibration'] + '\n'
-            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['yaxiscalibration'] + '\n'
-            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['zaxiscalibration'] + '\n'
-            # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrarionStateChanged')['calibrationfailed']
-            # rtn = self.send_data('common', 'CalibrationState', 'MagnetoCalibrarionStateChanged')
             cali_required = self._state.get_value('common.CalibrationState.MagnetoCalibrationRequiredState')['required']
-            # self.send_data('common.Calibration.MagnetoCalibration', 1)
-            # rtn = self.wait_answer('common.CalibrationState.MagnetoCalibrationStateChanged')
-            # ================================================
             if cali_required == 1:
                 self.send_data('common.Calibration.MagnetoCalibration', 1)
+                stdscr.addstr(10, 15, '- Cali required')
+                stdscr.refresh()
             elif cali_required == 0:
-                stdscr.addstr(10,13,'Cali not required')
+                stdscr.addstr(10, 15, '+ Cali not required')
                 stdscr.refresh()
                 time.sleep(2)
                 return
 
             self.wait_answer('common.CalibrationState.MagnetoCalibrationStateChanged')
 
-            cnt = 0
             stdscr.clear()
             stdscr.addstr(10, 13, 'Go calibration...')
             stdscr.refresh()
-            rtn = ''
+
             while True:
+                rtn = 'Follow as zAxis -> yAxis -> xAxis\n'
                 values = self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')
-                if values['xAxisCalibration'] == 1:
-                    rtn += '+ x Axis done(ROLL)'
-                    x = 0
-                else:
-                    rtn += '- x Axis required(ROLL)'
-                if values['yAxisCalibration'] == 1:
-                    rtn += '\n\t+ y Axis done(PITCH)'
-                    y = 0
-                else:
-                    rtn += '\n\t- y Axis required(PITCH)'
+
                 if values['zAxisCalibration'] == 1:
-                    rtn += '\n\t+ z Axis done(YAW)'
+                    rtn += '\n\t\t+ z Axis done(YAW)\t\t'
                     z = 0
                 else:
-                    rtn += '\n\t- z Axis required(YAW)'
+                    rtn += '\n\ts\t- z Axis required(YAW)'
+                if values['yAxisCalibration'] == 1:
+                    rtn += '\n\t\t+ y Axis done(PITCH)\t\t'
+                    y = 0
+                else:
+                    rtn += '\n\t\t- y Axis required(PITCH)'
+                if values['xAxisCalibration'] == 1:
+                    rtn += '\n\t\t+ x Axis done(ROLL)\t\t'
+                    x = 0
+                else:
+                    rtn += '\n\t\t- x Axis required(ROLL)'
                 stdscr.addstr(12, 15, rtn)
                 stdscr.refresh()
                 time.sleep(1)
@@ -377,11 +378,8 @@ class Device(object):
                     stdscr.refresh()
                     time.sleep(2)
                     break
-                    # rtn += self._state.get_value('common.CalibrationState.MagnetoCalibrationStateChanged')['calibrationFailed']
-
-            return rtn
         except:
-            return 0
+            raise
 
     def get_mav_availability(self, stdscr):
         stdscr.clear()

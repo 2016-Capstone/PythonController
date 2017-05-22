@@ -7,89 +7,74 @@ import code
 import readline
 import rlcompleter
 import time
+import thread
+import multiprocessing
 
 sys.path.append('../src')
 
 from Bybop_Discovery import *
 import Bybop_Device
+import Constants
+import Bybop_LTE
 
-BAT_PRINT_X = 5
-BAT_PRINT_Y = 2
-
-KEY_PRINT_X = 5
-KEY_PRINT_Y = 3
-
-MAV_PRINT_X = 5
-MAV_PRINT_Y = 5
-
-GPS_PRINT_X = 5
-GPS_PRINT_Y = 7
-
-ALT_PRINT_X = 5
-ALT_PRINT_Y = 12
-
-ATT_PRINT_X = 5
-ATT_PRINT_Y = 14
-
-HOME_PRINT_X = 5
-HOME_PRINT_Y = 19
-
-#RST_HOME_PRINT_X = 5
-#RST_HOME_PRINT_Y = 24
-
-HOME_STATE_PRINT_X = 5
-HOME_STATE_PRINT_Y = 24
 
 IS_BACK_HOME_IN_PROCESS = True
+PATH = './fifo_cmd'
+CMD = ['65','66','68','67','114','102','100','103','113']
 
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
 
+'''
+def get_fifo(PATH):
+    if not os.path.exists(PATH):
+        os.mkfifo(PATH)
+
+    fifo = os.open(PATH, os.O_RDWR)
+    return fifo
+'''
+
+def get_pipe():
+    fd_read, fd_write = os.pipe()
+    fd_read = os.fdopen(fd_read, 'r')
+    fd_write = os.fdopen(fd_write, 'w')
+    return fd_read, fd_write
+
 def input_processing(drone, key, stdscr):
+    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + "\t")
     hometype = 2
     if key == 65 or key == curses.KEY_UP: #UP
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'UP')
         #stdscr.refresh()
         drone.up()
     elif key == 66 or key == curses.KEY_DOWN: #DOWN
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'DOWN')
         #stdscr.refresh()
         drone.down()
     elif key == 68 or key == curses.KEY_LEFT: #SIDE LEFT
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'SIDE LEFT')
         #stdscr.refresh()
         drone.side_left()
     elif key == 67 or key == curses.KEY_RIGHT: #SIDE RIGHT
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'SIDE RIGHT')
         #stdscr.refresh()
         drone.side_right()
     elif key == 101 or key == 'e': #EMERGENCY
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'EMERGENCY')
         #stdscr.refresh()
         drone.emergency()
         time.sleep(3)
     elif key == 116 or key == 't': #TAKEOFF
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'TAKE OFF')
         #stdscr.refresh()
         drone.take_off()
     elif key == 32 or key == '  ': #LAND
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'LAND')
         #stdscr.refresh()
         drone.land()
     elif key == 114 or key == 'r': #FORWARD
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'FORWARD')
         #stdscr.refresh()
         drone.forward()
     elif key == 102 or key == 'f': #REAR
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'REAR')
         #stdscr.refresh()
         drone.rear()
     elif key == 100 or key == 'd': #ROLL LEFT
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'ROLL LEFT')
         #stdscr.refresh()
         drone.roll_left()
     elif key == 103 or key == 'g': #ROLL RIGHT
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'ROLL RIGHT')
         #stdscr.refresh()
         drone.roll_right()
     elif key == 109 or key == 'm': #Mav Mode
@@ -97,7 +82,7 @@ def input_processing(drone, key, stdscr):
         while drone.get_mav_state(stdscr) is not True:
             if cnt == 3:
                 stdscr.clear()
-                stdscr.addstr(MAV_PRINT_Y, MAV_PRINT_X, 'MAV Doesnt work :(')
+                stdscr.addstr(Constants.MAV_PRINT_Y, Constants.MAV_PRINT_X, 'MAV Doesnt work :(')
                 stdscr.refresh()
                 time.sleep(2)
                 break
@@ -105,14 +90,13 @@ def input_processing(drone, key, stdscr):
             stdscr.clear()
         if(cnt < 3):
             stdscr.clear()
-            stdscr.addstr(MAV_PRINT_Y, MAV_PRINT_X, 'MAV WORKS GOOD!!!')
+            stdscr.addstr(Constants.MAV_PRINT_Y, Constants.MAV_PRINT_X, 'MAV WORKS GOOD!!!')
             stdscr.refresh()
             time.sleep(2)
     elif key == 104 or key == 'h': #home
         drone.send_contoller_gps()
         #drone.reset_node()
         hometype = drone.get_test_hometype(stdscr)
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, 'home type is ' + str(hometype))
         stdscr.refresh()
         time.sleep(1)
     elif key == 97 or key == 'a':
@@ -121,19 +105,18 @@ def input_processing(drone, key, stdscr):
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             stdscr.clear()
-            stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X, rtn)
+            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
             stdscr.refresh()
             time.sleep(1)
         IS_BACK_HOME_IN_PROCESS = True
     else:
-        stdscr.addstr(KEY_PRINT_Y, KEY_PRINT_X,'None : ' + str(key) + ' pressed')
         stdscr.refresh()
         #drone.trim()
         drone.hover()
 
 def print_battery(drone, stdscr):
     bat = drone.get_battery()
-    stdscr.addstr(BAT_PRINT_Y, BAT_PRINT_X, 'battery : ' + str(bat))
+    stdscr.addstr(Constants.BAT_PRINT_Y, Constants.BAT_PRINT_X, 'battery : ' + str(bat))
 
 def print_gps(drone, stdscr):
     at, lat, lon = drone.get_gps();
@@ -141,14 +124,14 @@ def print_gps(drone, stdscr):
     rtn += '\n\taltitude\t: ' + str(at)
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
-    stdscr.addstr(GPS_PRINT_Y, GPS_PRINT_X, rtn)
+    stdscr.addstr(Constants.GPS_PRINT_Y, Constants.GPS_PRINT_X, rtn)
     #stdscr.refresh()
 
 def print_altitude(drone, stdscr):
     alt = drone.get_altitude()
     rtn = '>>'
     rtn += 'realtime_altitde\t: ' + str(alt)
-    stdscr.addstr(ALT_PRINT_Y, ALT_PRINT_X, rtn)
+    stdscr.addstr(Constants.ALT_PRINT_Y, Constants.ALT_PRINT_X, rtn)
     #stdscr.refresh()
 
 def print_attitude(drone, stdscr):
@@ -157,7 +140,7 @@ def print_attitude(drone, stdscr):
     rtn += '\n\tpitch\t: ' + str(pitch)
     rtn += '\n\troll\t: ' + str(roll)
     rtn += '\n\tyaw\t: ' + str(yaw)
-    stdscr.addstr(ATT_PRINT_Y, ATT_PRINT_X, rtn)
+    stdscr.addstr(Constants.ATT_PRINT_Y, Constants.ATT_PRINT_X, rtn)
     #stdscr.refresh()
 
 def print_home_position(drone, stdscr):
@@ -166,7 +149,7 @@ def print_home_position(drone, stdscr):
     rtn += '\n\taltitude\t: ' + str(at)
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
-    stdscr.addstr(HOME_PRINT_Y, HOME_PRINT_X, rtn)
+    stdscr.addstr(Constants.HOME_PRINT_Y, Constants.HOME_PRINT_X, rtn)
 """
 def print_reset_home_position(drone, stdscr):
     at, lat, lon = drone.get_reset_home_position()
@@ -212,82 +195,102 @@ def print_return_home_state(drone, stdscr):
     else :
         rtn += 'Not Yet'
 
-    stdscr.addstr(HOME_STATE_PRINT_Y, HOME_STATE_PRINT_X, rtn)
-
-print 'Searching for devices'
-
-discovery = Discovery(DeviceID.ALL)
-
-discovery.wait_for_change()
-
-devices = discovery.get_devices()
-
-discovery.stop()
-
-if not devices:
-    print 'Oops ...'
-    sys.exit(1)
-
-device = devices.itervalues().next()
-
-print 'Will connect to ' + get_name(device)
-
-d2c_port = 54321
-controller_type = "PC"
-controller_name = "bybop shell"
-
-drone = Bybop_Device.create_and_connect(device, d2c_port, controller_type, controller_name)
-
-if drone is None:
-    print 'Unable to connect to a product'
-    sys.exit(1)
-
-drone.dump_state()
-
-vars = globals().copy()
-vars.update(locals())
-readline.set_completer(rlcompleter.Completer(vars).complete)
-readline.parse_and_bind("tab: complete")
-shell = code.InteractiveConsole(vars)
-
-#shell.interact()
+    stdscr.addstr(Constants.HOME_STATE_PRINT_Y, Constants.HOME_STATE_PRINT_X, rtn)
 
 
-stdscr = curses.initscr()
-curses.cbreak()
-stdscr.nodelay(1)
-stdscr.keypad(1)
-
-try:
-    drone.get_cali(stdscr)
-    drone.get_mav_availability(stdscr)
-    drone.set_max_altitude(5)
-    drone.set_home_type()
-    drone.trim()
-    key = ''
+def print_state(drone, stdscr):
+    print_battery(drone, stdscr)
+    print_gps(drone, stdscr)
+    print_altitude(drone, stdscr)
+    print_attitude(drone, stdscr)
+    print_home_position(drone, stdscr)
+    # print_reset_home_position(drone, stdscr)
+    print_return_home_state(drone, stdscr)
 
 
-    while key != ord('q'):
-        stdscr.clear()
+if __name__ == "__main__":
 
-        key = stdscr.getch()
-        input_processing(drone, key, stdscr)
+    print 'Searching for devices'
 
-        print_battery(drone, stdscr)
-        print_gps(drone, stdscr)
-        print_altitude(drone, stdscr)
-        print_attitude(drone, stdscr)
-        print_home_position(drone, stdscr)
-        #print_reset_home_position(drone, stdscr)
-        print_return_home_state(drone, stdscr)
+    '''DISCOVERY'''
+    discovery = Discovery(DeviceID.ALL)
+    discovery.wait_for_change()
+    devices = discovery.get_devices()
+    discovery.stop()
 
-        stdscr.refresh()
-        time.sleep(0.025) #40MHz / 25ms
+    if not devices:
+        print 'Oops ...'
+        sys.exit(1)
 
-except (KeyboardInterrupt, SystemExit, Exception) as e:
-    print '[EXCEPTION] ' + str(e)
+    device = devices.itervalues().next()
+
+    '''CONNECT'''
+    print 'Will connect to ' + get_name(device)
+    d2c_port = 54321
+    controller_type = "PC"
+    controller_name = "bybop shell"
+    drone = Bybop_Device.create_and_connect(device, d2c_port, controller_type, controller_name)
+
+    if drone is None:
+        print 'Unable to connect to a product'
+        sys.exit(1)
+
+    drone.dump_state()
+
+    '''SHELL SET'''
+    vars = globals().copy()
+    vars.update(locals())
+    readline.set_completer(rlcompleter.Completer(vars).complete)
+    readline.parse_and_bind("tab: complete")
+    shell = code.InteractiveConsole(vars)
+
+    #shell.interact()
+
+    '''NEW WINDOW'''
+    stdscr = curses.initscr()
+    curses.cbreak()
+    stdscr.nodelay(1)
+    stdscr.keypad(1)
+
+    '''FIFO INIT'''
+    pipe = multiprocessing.Queue()
+
+    try:
+        thread.start_new_thread(Bybop_LTE.get_from_LTE, (pipe,))
+
+        drone.set_cali()
+        drone.get_cali(stdscr)
+        #drone.get_mav_availability(stdscr)
+        drone.set_max_altitude(5)
+        drone.set_home_type()
+        drone.trim()
+
+        '''MAIN ROUTINE'''
+        key = -1
+        #while key != ord('q') or key != '113':
+        while key != 113:
+            stdscr.clear()
+
+            '''CMD PROCESSING'''
+            try:
+                key = pipe.get(False)
+            except Exception:
+                if key not in CMD:
+                    key = -1
+                'DONOTHING'
+            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, str(key))
+            #input_processing(drone, key, stdscr)
+
+            '''PRINTING MODULE'''
+            print_state(drone, stdscr)
+
+            stdscr.refresh()
+            time.sleep(0.025) #40MHz / 25ms
+
+    except (KeyboardInterrupt, SystemExit, Exception) as e:
+        print '[EXCEPTION] ' + str(e)
+        drone.stop()
+        curses.endwin()
+        raise
+
     drone.stop()
-    curses.endwin()
-    raise
-
-drone.stop()
