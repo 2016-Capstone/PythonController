@@ -80,6 +80,7 @@ def input_processing(drone, key, stdscr):
         time.sleep(3)
     elif key == 116 or key == 't': #TAKEOFF
         #stdscr.refresh()
+        drone.trim()
         drone.take_off()
     elif key == 32 or key == '  ': #LAND
         #stdscr.refresh()

@@ -20,7 +20,7 @@
     <favorites_list name="PythonController" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.33766234">
+    <splitter split-orientation="horizontal" split-proportion="0.49427044">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Constants.py" pinned="false" current-in-tab="false">
@@ -36,8 +36,8 @@
           <file leaf-file-name="Bybop_Device.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Bybop_Device.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="133">
-                  <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                <state relative-caret-position="492">
+                  <caret line="669" column="23" lean-forward="true" selection-start-line="669" selection-start-column="23" selection-end-line="669" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -50,19 +50,19 @@
           <file leaf-file-name="Controller.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/run/Controller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="628">
-                  <caret line="296" column="0" lean-forward="true" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+                <state relative-caret-position="476">
+                  <caret line="82" column="16" lean-forward="false" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
                   <folding>
                     <element signature="e#23#33#0" expanded="true" />
                     <element signature="e#620#756#0" expanded="false" />
-                    <marker date="1495452652235" expanded="false" signature="3737:3856" ph="..." />
-                    <marker date="1495452652235" expanded="false" signature="3887:4163" ph="..." />
-                    <marker date="1495452652235" expanded="false" signature="4199:4381" ph="..." />
-                    <marker date="1495452652235" expanded="false" signature="4417:4698" ph="..." />
-                    <marker date="1495452652235" expanded="false" signature="4739:5015" ph="..." />
-                    <marker date="1495452652235" expanded="false" signature="5016:5345" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                    <marker date="1495452652235" expanded="false" signature="5390:6367" ph="..." />
-                    <marker date="1495452652235" expanded="false" signature="6401:6660" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                    <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
+                    <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -119,12 +119,12 @@
       <list>
         <option value="$PROJECT_DIR$/samples/test.py" />
         <option value="$PROJECT_DIR$/samples/interactive.py" />
-        <option value="$PROJECT_DIR$/src/Bybop_Device.py" />
         <option value="$PROJECT_DIR$/run/key_tester.py" />
         <option value="$PROJECT_DIR$/src/Constants.py" />
         <option value="$PROJECT_DIR$/src/Bybop_LTE.py" />
         <option value="$PROJECT_DIR$/src/Bybop_BT.py" />
         <option value="$PROJECT_DIR$/run/Controller.py" />
+        <option value="$PROJECT_DIR$/src/Bybop_Device.py" />
       </list>
     </option>
   </component>
@@ -711,7 +711,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495445521053</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="[ANKER POINT] LTE TEST">
+      <created>1495452739730</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1495452739730</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -727,7 +734,7 @@
     <frame x="-7" y="0" width="1558" height="1447" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15110247" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15110247" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -790,14 +797,14 @@
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495452652235" expanded="false" signature="3737:3856" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="3887:4163" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4199:4381" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4417:4698" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4739:5015" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="5016:5345" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495452652235" expanded="false" signature="5390:6367" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="6401:6660" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
           </folding>
         </state>
       </provider>
@@ -835,14 +842,14 @@
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495452652235" expanded="false" signature="3737:3856" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="3887:4163" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4199:4381" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4417:4698" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4739:5015" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="5016:5345" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495452652235" expanded="false" signature="5390:6367" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="6401:6660" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
           </folding>
         </state>
       </provider>
@@ -887,14 +894,14 @@
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495452652235" expanded="false" signature="3737:3856" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="3887:4163" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4199:4381" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4417:4698" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4739:5015" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="5016:5345" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495452652235" expanded="false" signature="5390:6367" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="6401:6660" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
           </folding>
         </state>
       </provider>
@@ -964,30 +971,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bybop_Device.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run/Controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="628">
-          <caret line="296" column="0" lean-forward="true" selection-start-line="296" selection-start-column="0" selection-end-line="296" selection-end-column="0" />
+        <state relative-caret-position="476">
+          <caret line="82" column="16" lean-forward="false" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495452652235" expanded="false" signature="3737:3856" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="3887:4163" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4199:4381" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4417:4698" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="4739:5015" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="5016:5345" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495452652235" expanded="false" signature="5390:6367" ph="..." />
-            <marker date="1495452652235" expanded="false" signature="6401:6660" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
+            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bybop_Device.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="669" column="23" lean-forward="true" selection-start-line="669" selection-start-column="23" selection-end-line="669" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
