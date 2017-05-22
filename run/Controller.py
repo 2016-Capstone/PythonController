@@ -9,6 +9,7 @@ import rlcompleter
 import time
 import thread
 import multiprocessing
+import socket
 
 sys.path.append('../src')
 
@@ -39,6 +40,25 @@ def get_pipe():
     fd_read = os.fdopen(fd_read, 'r')
     fd_write = os.fdopen(fd_write, 'w')
     return fd_read, fd_write
+
+def get_socket():
+    while True:
+        try:
+            c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            c_socket.connect(Constants.ADDR)
+            # c_socket.setblocking(0)
+        except Exception as e:
+            print("Wrong connection to %s:%d (%s)" % (Constants.HOST, Constants.PORT, e))
+            c_socket.close()
+            time.sleep(2)
+            continue
+
+        try:
+            c_socket.send('DVTYPE=1%%MSGTYPE=3\n')
+        except Exception as e:
+            continue
+
+        return c_socket
 
 def input_processing(drone, key, stdscr):
     stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + "\t")
@@ -256,8 +276,11 @@ if __name__ == "__main__":
     '''FIFO INIT'''
     pipe = multiprocessing.Queue()
 
+    '''SOCKET INIT'''
+    c_socket = get_socket()
+
     try:
-        thread.start_new_thread(Bybop_LTE.get_from_LTE, (pipe,))
+        thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, pipe,))
 
         drone.set_cali()
         drone.get_cali(stdscr)

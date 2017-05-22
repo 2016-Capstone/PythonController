@@ -3,15 +3,17 @@ import os
 import sys
 import time
 import errno
-
+'''
 HOST = '210.125.31.25'
 PORT = 443
 ADDR = (HOST, PORT)
+'''
 
 CMD = [65,66,68,67,114,102,100,103,113]
 
-def get_from_LTE(fifo):
+def get_from_LTE(c_socket, fifo):
     while (True):
+        '''
         try:
             c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             c_socket.connect(ADDR)
@@ -26,6 +28,8 @@ def get_from_LTE(fifo):
             c_socket.send('DVTYPE=1%%MSGTYPE=3\n')
         except Exception as e:
             continue
+        '''
+
         fix = -1
         while (True):
             try:
