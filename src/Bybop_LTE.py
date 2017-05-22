@@ -67,5 +67,31 @@ def get_from_LTE(c_socket, locker, fifo):
                 c_socket.close()
                 #fifo.close()
                 print ('\nEND')
-                sys.exit()
-        c_socket.close()
+                raise Exception
+
+def send_to_LTE(c_socket, locker, lat, lon):
+        '''
+        try:
+            c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            c_socket.connect(ADDR)
+            #c_socket.setblocking(0)
+        except Exception as e:
+            print("Wrong connection to %s:%d (%s)" % (HOST, PORT, e))
+            c_socket.close()
+            time.sleep(2)
+            continue
+
+        try:
+            c_socket.send('DVTYPE=1%%MSGTYPE=3\n')
+        except Exception as e:
+            continue
+        '''
+        try:
+            locker.acquire()
+            c_socket.send('DVTYPE=1%%MSGTYPE=1%%DATA=' + str(lat) + '/' + str(lon) + '\n')
+            locker.release()
+        except (KeyboardInterrupt, SystemExit, Exception):
+            c_socket.close()
+            # fifo.close()
+            print ('\nEND')
+            raise Exception

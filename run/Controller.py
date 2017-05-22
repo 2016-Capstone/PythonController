@@ -17,6 +17,7 @@ from Bybop_Discovery import *
 import Bybop_Device
 import Constants
 import Bybop_LTE
+import Bybop_BT
 
 
 IS_BACK_HOME_IN_PROCESS = True
@@ -146,6 +147,7 @@ def print_gps(drone, stdscr):
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
     stdscr.addstr(Constants.GPS_PRINT_Y, Constants.GPS_PRINT_X, rtn)
+    return lat, lon
     #stdscr.refresh()
 
 def print_altitude(drone, stdscr):
@@ -221,12 +223,13 @@ def print_return_home_state(drone, stdscr):
 
 def print_state(drone, stdscr):
     print_battery(drone, stdscr)
-    print_gps(drone, stdscr)
+    lat, lon = print_gps(drone, stdscr)
     print_altitude(drone, stdscr)
     print_attitude(drone, stdscr)
     #print_home_position(drone, stdscr)
     '''print_reset_home_position(drone, stdscr)'''
     #print_return_home_state(drone, stdscr)
+    return lat, lon
 
 
 if __name__ == "__main__":
@@ -279,9 +282,11 @@ if __name__ == "__main__":
     '''SOCKET INIT'''
     c_socket = get_socket()
 
+    cnt = 0
     try:
         locker = thread.allocate_lock()
         thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, locker, pipe,))
+        thread.start_new_thread(Bybop_BT.start_BT_service, (c_socket, locker, ))
 
         drone.set_cali()
         drone.get_cali(stdscr)
@@ -315,8 +320,11 @@ if __name__ == "__main__":
             input_processing(drone, intKey, stdscr)
 
             '''PRINTING MODULE'''
-            print_state(drone, stdscr)
-
+            lat, lon = print_state(drone, stdscr)
+            if cnt == 3:
+                Bybop_LTE.send_to_LTE(c_socket, locker, lat, lon)
+                cnt = 0
+            cnt = cnt + 1
             stdscr.refresh()
             time.sleep(0.025) #40MHz / 25ms
 

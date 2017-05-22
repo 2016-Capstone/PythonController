@@ -84,13 +84,12 @@ def socket_lte_send_img(c_socket, locker, length, img):
 
 def start_BT_service(c_socket, locker):
 
-    ble_init()
-    bt_socket = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
 
     try:
+        '''
         while True:
 
-            '''
+
             s_lte = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             socket_ble_init()
 
@@ -114,23 +113,27 @@ def start_BT_service(c_socket, locker):
                 continue
 
             '''
-            while True:
-                try:
-                    while True:
-                        lists = ble_scan()
-                        if not lists:
-                            print(lists)
-                            break
-                    print '(BLE)Rcv try...'
-                    rcv = socket_ble_recv()
-                    rcv += '\n'
-                    print(rcv)
-                    socket_lte_send_img(len(rcv), rcv)
-                    print '(LTE)Send img'
-                except Exception as e:
-                    print("Err %s" % (e))
-                    bt_socket.close()
-                    c_socket.close()
-                    break
-    except (KeyboardInterrupt, SystemExit):
+        ble_init()
+        bt_socket = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
+        socket_ble_init(bt_socket)
+
+        while True:
+            try:
+                while True:
+                    lists = ble_scan()
+                    if not lists:
+                        print(lists)
+                        break
+                print '(BLE)Rcv try...'
+                rcv = socket_ble_recv(bt_socket)
+                rcv += '\n'
+                print(rcv)
+                socket_lte_send_img(c_socket, locker, len(rcv), rcv)
+                print '(LTE)Send img'
+            except Exception as e:
+                print("Err %s" % (e))
+                bt_socket.close()
+                c_socket.close()
+                break
+    except (KeyboardInterrupt, SystemExit, Exception):
         raise
