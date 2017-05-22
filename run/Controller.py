@@ -109,6 +109,7 @@ def input_processing(drone, key, stdscr):
             stdscr.refresh()
             time.sleep(1)
         IS_BACK_HOME_IN_PROCESS = True
+
     else:
         stdscr.refresh()
         #drone.trim()
