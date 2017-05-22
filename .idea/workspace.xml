@@ -50,19 +50,16 @@
           <file leaf-file-name="Controller.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/run/Controller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="82" column="16" lean-forward="false" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
+                <state relative-caret-position="785">
+                  <caret line="227" column="50" lean-forward="true" selection-start-line="227" selection-start-column="50" selection-end-line="227" selection-end-column="50" />
                   <folding>
                     <element signature="e#23#33#0" expanded="true" />
                     <element signature="e#620#756#0" expanded="false" />
-                    <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
-                    <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
-                    <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
-                    <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
-                    <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
-                    <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                    <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
-                    <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
+                    <marker date="1495454466926" expanded="false" signature="3758:3877" ph="..." />
+                    <marker date="1495454466926" expanded="false" signature="3908:4184" ph="..." />
+                    <marker date="1495454466926" expanded="false" signature="4220:4402" ph="..." />
+                    <marker date="1495454466926" expanded="false" signature="4438:4719" ph="..." />
+                    <marker date="1495454466926" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
                   </folding>
                 </state>
               </provider>
@@ -123,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/Constants.py" />
         <option value="$PROJECT_DIR$/src/Bybop_LTE.py" />
         <option value="$PROJECT_DIR$/src/Bybop_BT.py" />
-        <option value="$PROJECT_DIR$/run/Controller.py" />
         <option value="$PROJECT_DIR$/src/Bybop_Device.py" />
+        <option value="$PROJECT_DIR$/run/Controller.py" />
       </list>
     </option>
   </component>
@@ -718,7 +715,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495452739730</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="[ANKER POINT] LTE TEST">
+      <created>1495454252468</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1495454252468</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -797,14 +801,11 @@
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -842,14 +843,11 @@
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -894,14 +892,11 @@
           <folding>
             <element signature="e#23#33#0" expanded="true" />
             <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
           </folding>
         </state>
       </provider>
@@ -971,30 +966,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run/Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="82" column="16" lean-forward="false" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
-          <folding>
-            <element signature="e#23#33#0" expanded="true" />
-            <element signature="e#620#756#0" expanded="false" />
-            <marker date="1495453573421" expanded="false" signature="3758:3877" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="3908:4184" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4220:4402" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4438:4719" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="4760:5036" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1495453573421" expanded="false" signature="5411:6388" ph="..." />
-            <marker date="1495453573421" expanded="false" signature="6422:6681" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bybop_Device.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="492">
           <caret line="669" column="23" lean-forward="true" selection-start-line="669" selection-start-column="23" selection-end-line="669" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run/Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="227" column="50" lean-forward="true" selection-start-line="227" selection-start-column="50" selection-end-line="227" selection-end-column="50" />
+          <folding>
+            <element signature="e#23#33#0" expanded="true" />
+            <element signature="e#620#756#0" expanded="false" />
+            <marker date="1495454466926" expanded="false" signature="3758:3877" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="3908:4184" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4220:4402" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="4438:4719" ph="..." />
+            <marker date="1495454466926" expanded="false" signature="5037:5366" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+          </folding>
         </state>
       </provider>
     </entry>

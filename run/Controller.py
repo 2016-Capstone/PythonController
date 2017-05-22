@@ -224,9 +224,9 @@ def print_state(drone, stdscr):
     print_gps(drone, stdscr)
     print_altitude(drone, stdscr)
     print_attitude(drone, stdscr)
-    print_home_position(drone, stdscr)
-    # print_reset_home_position(drone, stdscr)
-    print_return_home_state(drone, stdscr)
+    #print_home_position(drone, stdscr)
+    '''print_reset_home_position(drone, stdscr)'''
+    #print_return_home_state(drone, stdscr)
 
 
 if __name__ == "__main__":
