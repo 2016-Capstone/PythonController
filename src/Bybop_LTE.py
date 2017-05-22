@@ -11,7 +11,7 @@ ADDR = (HOST, PORT)
 
 CMD = [65,66,68,67,114,102,100,103,113]
 
-def get_from_LTE(c_socket, fifo):
+def get_from_LTE(c_socket, locker, fifo):
     while (True):
         '''
         try:
@@ -33,7 +33,9 @@ def get_from_LTE(c_socket, fifo):
         fix = -1
         while (True):
             try:
+                locker.acquire()
                 data = c_socket.recv(1024)
+                locker.release()
                 if data == '':
                     break
                 if data == 'HELLO\n':

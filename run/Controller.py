@@ -280,7 +280,8 @@ if __name__ == "__main__":
     c_socket = get_socket()
 
     try:
-        thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, pipe,))
+        locker = thread.allocate_lock()
+        thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, locker, pipe,))
 
         drone.set_cali()
         drone.get_cali(stdscr)

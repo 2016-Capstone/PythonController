@@ -15,12 +15,13 @@ port = 3
 backlog = 1
 size = 1024
 
+'''
 IP = '210.125.31.25'
 PORT = 443
 SERVER = (IP, PORT)
 
 MSG_HELLO = "DVTYPE=1%%MSGTYPE=3\n"
-
+'''
 
 ################
 
@@ -33,14 +34,14 @@ def ble_scan():
     return bl.get_paired_devices()
 
 
-def socket_ble_init():
-    s_bt.bind((hostMACAddress, port))
-    s_bt.listen(backlog)
+def socket_ble_init(bt_socket):
+    bt_socket.bind((hostMACAddress, port))
+    bt_socket.listen(backlog)
 
 
-def socket_ble_recv():
+def socket_ble_recv(bt_socket):
     buf = ''
-    conn, addr = s_bt.accept()
+    conn, addr = bt_socket.accept()
 
     try:
         while True:
@@ -56,19 +57,21 @@ def socket_ble_recv():
     conn.close()
     return buf
 
-
-def socket_lte_init():
-    s_lte.connect(SERVER)
-
-
-def socket_lte_send_hello():
-    s_lte.sendall(MSG_HELLO)
+'''
+def socket_lte_init(c_socket):
+    c_socket.connect(SERVER)
 
 
-def socket_lte_send_img(length, img):
+def socket_lte_send_hello(c_socket):
+    c_socket.sendall(MSG_HELLO)
+'''
+
+def socket_lte_send_img(c_socket, locker, length, img):
     totalsent = 0
     while totalsent < length:
-        result = s_lte.send(img)
+        locker.acquire()
+        result = c_socket.send(img)
+        locker.release()
         if result == 0:
             print 'socket connection broken'
             return
@@ -79,13 +82,15 @@ def socket_lte_send_img(length, img):
 ##### MAIN ROUTINE #####
 ########################
 
-if __name__ == "__main__":
+def start_BT_service(c_socket, locker):
 
     ble_init()
+    bt_socket = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
 
     try:
         while True:
-            s_bt = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
+
+            '''
             s_lte = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             socket_ble_init()
 
@@ -108,6 +113,7 @@ if __name__ == "__main__":
                 s_lte.close()
                 continue
 
+            '''
             while True:
                 try:
                     while True:
@@ -123,8 +129,8 @@ if __name__ == "__main__":
                     print '(LTE)Send img'
                 except Exception as e:
                     print("Err %s" % (e))
-                    s_bt.close()
-                    s_lte.close()
+                    bt_socket.close()
+                    c_socket.close()
                     break
     except (KeyboardInterrupt, SystemExit):
         raise
