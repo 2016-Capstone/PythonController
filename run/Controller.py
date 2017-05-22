@@ -290,9 +290,9 @@ if __name__ == "__main__":
         drone.trim()
 
         '''MAIN ROUTINE'''
-        key = -1
-        #while key != ord('q') or key != '113':
-        while key != 113:
+        key = ''
+        while key != ord('q'):
+        #while key != 113:
             stdscr.clear()
 
             '''CMD PROCESSING'''
@@ -300,10 +300,18 @@ if __name__ == "__main__":
                 key = pipe.get(False)
             except Exception:
                 if key not in CMD:
-                    key = -1
+                    key = '-1'
                 'DONOTHING'
-            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, str(key))
-            input_processing(drone, key, stdscr)
+            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + str(type(key)))
+            if key == '113':
+                break
+            try:
+                intKey = int(key)
+            except Exception:
+                continue
+
+            stdscr.addstr(Constants.KEY_PRINT_Y+1, Constants.KEY_PRINT_X, str(intKey) + str(type(intKey )))
+            input_processing(drone, intKey, stdscr)
 
             '''PRINTING MODULE'''
             print_state(drone, stdscr)
