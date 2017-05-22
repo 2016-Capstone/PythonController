@@ -304,7 +304,7 @@ if __name__ == "__main__":
                     key = -1
                 'DONOTHING'
             stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, str(key))
-            #input_processing(drone, key, stdscr)
+            input_processing(drone, key, stdscr)
 
             '''PRINTING MODULE'''
             print_state(drone, stdscr)
