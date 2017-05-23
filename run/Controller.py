@@ -83,7 +83,7 @@ def input_processing(drone, key, stdscr):
     elif key == 116 or key == 't': #TAKEOFF
         #stdscr.refresh()
         drone.trim()
-        #drone.take_off()
+        drone.take_off()
     elif key == 32 or key == '  ': #LAND
         #stdscr.refresh()
         drone.land()
@@ -129,12 +129,13 @@ def input_processing(drone, key, stdscr):
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             try:
+                drone.go_node()
                 stdscr.clear()
                 print_home_position(drone, stdscr)
                 stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
                 stdscr.refresh()
                 time.sleep(1)
-            except (KeyboardInterrupt) as e:
+            except (KeyboardInterrupt, Exception) as e:
                 break
         IS_BACK_HOME_IN_PROCESS = True
 
@@ -305,10 +306,10 @@ if __name__ == "__main__":
         '''DRONE INIT SET'''
         drone.set_cali()
         drone.get_cali(stdscr)
-        #drone.get_mav_availability(stdscr)
+        drone.get_mav_availability(stdscr)
         drone.set_max_altitude(5)
         drone.set_home_type()
-
+        input_processing(drone, 109, stdscr)
         '''MAIN ROUTINE'''
         key = ''
         while key != ord('q'):
@@ -334,7 +335,8 @@ if __name__ == "__main__":
                             log(stdscr, str(e))
                             time.sleep(3)
                             break
-
+                        
+                        drone.send_contoller_gps(f_x, f_y)
                         drone.send_contoller_gps(f_x, f_y)
                         input_processing(drone, 104, stdscr)
                         time.sleep(3)
