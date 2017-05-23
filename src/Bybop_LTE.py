@@ -90,7 +90,7 @@ def send_to_LTE(c_socket, locker, gps_q):
         while True:
             try:
                 gps = gps_q.get()
-                if cnt == 3:
+                if cnt == 39:
                     locker.acquire()
                     c_socket.send('DVTYPE=1%%MSGTYPE=1%%DATA=' + gps + '\n')
                     c_socket.send("\n")
