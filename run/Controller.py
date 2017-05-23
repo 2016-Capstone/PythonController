@@ -308,7 +308,7 @@ if __name__ == "__main__":
             try:
                 key = cmd_q.get(False)
                 splited = key.split('&&')
-                if splited.length > 0:
+                if len(splited) > 1:
                     stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, splited) 
                     stdscr.refresh()
                     #input_processing(drone, 116, stdscr)
@@ -325,7 +325,7 @@ if __name__ == "__main__":
                 if key not in CMD:
                     key = '-1'
                 'DONOTHING'
-            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + str(type(key)))
+            #stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + str(type(key)))
             if key == '113':
                 break
             try:
