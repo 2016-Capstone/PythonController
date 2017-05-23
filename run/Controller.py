@@ -289,7 +289,7 @@ if __name__ == "__main__":
         locker = thread.allocate_lock()
         thread.start_new_thread(Bybop_LTE.get_from_LTE, (recv_socekt, locker, cmd_q,))
         thread.start_new_thread(Bybop_LTE.send_to_LTE, (send_socket, locker, gps_q))
-        thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker, stdscr))
+        #thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker, stdscr))
 
         drone.set_cali()
         drone.get_cali(stdscr)
