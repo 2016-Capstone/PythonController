@@ -17,7 +17,7 @@ from Bybop_Discovery import *
 import Bybop_Device
 import Constants
 import Bybop_LTE
-import Bybop_BT
+#import Bybop_BT
 
 
 IS_BACK_HOME_IN_PROCESS = True
