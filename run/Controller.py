@@ -82,7 +82,7 @@ def input_processing(drone, key, stdscr):
     elif key == 116 or key == 't': #TAKEOFF
         #stdscr.refresh()
         drone.trim()
-        #drone.take_off()
+        drone.take_off()
     elif key == 32 or key == '  ': #LAND
         #stdscr.refresh()
         drone.land()
@@ -317,7 +317,7 @@ if __name__ == "__main__":
                         x = path[0]
                         y = path[1]
                         drone.send_contoller_gps(x,y)
-                        #input_processing(drone, 104, stdscr)
+                        input_processing(drone, 104, stdscr)
                         time.sleep(3)
                     key = '-1'
                     #input_processing(drone, 32, stdscr)
