@@ -289,7 +289,7 @@ if __name__ == "__main__":
         locker = thread.allocate_lock()
         thread.start_new_thread(Bybop_LTE.get_from_LTE, (recv_socekt, locker, cmd_q,))
         thread.start_new_thread(Bybop_LTE.send_to_LTE, (send_socket, locker, gps_q))
-        thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker,))
+        thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker, stdscr))
 
         drone.set_cali()
         drone.get_cali(stdscr)
@@ -311,7 +311,7 @@ if __name__ == "__main__":
                 if key not in CMD:
                     key = '-1'
                 'DONOTHING'
-            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + str(type(key)))
+            #stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, key + str(type(key)))
             if key == '113':
                 break
             try:
@@ -319,7 +319,7 @@ if __name__ == "__main__":
             except Exception:
                 continue
 
-            stdscr.addstr(Constants.KEY_PRINT_Y+1, Constants.KEY_PRINT_X, str(intKey) + str(type(intKey )))
+            #stdscr.addstr(Constants.KEY_PRINT_Y+1, Constants.KEY_PRINT_X, str(intKey) + str(type(intKey )))
             input_processing(drone, intKey, stdscr)
 
             '''PRINTING MODULE'''

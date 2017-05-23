@@ -83,7 +83,7 @@ def socket_lte_send_img(c_socket, locker, length, img):
 ##### MAIN ROUTINE #####
 ########################
 
-def start_BT_service(c_socket, locker):
+def start_BT_service(c_socket, locker, stdscr):
 
 
     try:
@@ -125,9 +125,13 @@ def start_BT_service(c_socket, locker):
                     if not lists:
                         print(lists)
                         break
-                print '(BLE)Rcv try...'
+                msg = '(BLE)Rcv try...'
+                stdscr.addstr(3, 5, msg)
+                stdscr.refresh()
                 rcv = socket_ble_recv(bt_socket)
                 rcv += '\n'
+                stdscr.addstr(3, 5, 'SEND!!!')
+                stdscr.refresh()
                 print(rcv)
                 socket_lte_send_img(c_socket, locker, len(rcv), rcv)
                 print '(LTE)Send img'
