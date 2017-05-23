@@ -322,7 +322,7 @@ if __name__ == "__main__":
             '''PRINTING MODULE'''
             lat, lon = print_state(drone, stdscr)
             if cnt == 3:
-                thread.start_new_thread(Bybop_LTE.send_to_LTE, (c_socket, locker, lat, lon, ))
+                Bybop_LTE.send_to_LTE(c_socket, locker, lat, lon)
                 cnt = 0
             cnt = cnt + 1
             stdscr.refresh()
