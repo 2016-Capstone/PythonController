@@ -82,7 +82,7 @@ def input_processing(drone, key, stdscr):
     elif key == 116 or key == 't': #TAKEOFF
         #stdscr.refresh()
         drone.trim()
-        drone.take_off()
+        #drone.take_off()
     elif key == 32 or key == '  ': #LAND
         #stdscr.refresh()
         drone.land()
@@ -307,6 +307,13 @@ if __name__ == "__main__":
             '''CMD PROCESSING'''
             try:
                 key = cmd_q.get(False)
+                if "PATH" in key:
+                    key = key.split('=')[1]
+                    splited = key.split('&&')
+                    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, splited)
+                    stdscr.refresh()
+                    time.sleep(5)
+                '''
                 splited = key.split('&&')
                 if len(splited) > 1:
                     stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, splited) 
@@ -321,6 +328,7 @@ if __name__ == "__main__":
                         time.sleep(3)
                     key = '-1'
                     #input_processing(drone, 32, stdscr)
+                    '''
             except Exception:
                 if key not in CMD:
                     key = '-1'
