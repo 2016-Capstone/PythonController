@@ -309,7 +309,7 @@ if __name__ == "__main__":
                 key = cmd_q.get(False)
                 splited = key.split('&&')
                 if len(splited) > 1:
-                    input_processing(drone, 116, stdscr)
+                    #input_processing(drone, 116, stdscr)
                     for path in splited:
                         path = path.split('/')
                         x = path[0]
@@ -318,7 +318,7 @@ if __name__ == "__main__":
                         input_processing(drone, 104, stdscr)
                         time.sleep(3)
                     key = '-1'
-                    input_processing(drone, 32, stdscr)
+                    #input_processing(drone, 32, stdscr)
             except Exception:
                 if key not in CMD:
                     key = '-1'
