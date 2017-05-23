@@ -121,11 +121,12 @@ def input_processing(drone, key, stdscr):
         stdscr.refresh()
         time.sleep(1)
     #elif key == 97 or key == 'a':
-        drone.go_node()
+        #drone.go_node()
         rtn = 'Processing...'
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             stdscr.clear()
+            print_home_position(drone, stdscr)
             stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
             stdscr.refresh()
             time.sleep(1)
@@ -169,9 +170,9 @@ def print_attitude(drone, stdscr):
 def print_home_position(drone, stdscr):
     at, lat, lon = drone.get_home_position()
     rtn = '>>realtime_home_position'
-    rtn += '\n\taltitude\t: ' + str(at)
-    rtn += '\n\tlatitude\t: ' + str(lat)
-    rtn += '\n\tlongitude\t: ' + str(lon)
+    rtn += '\n\t\t\t\t\taltitude\t: ' + str(at)
+    rtn += '\n\t\t\t\t\tlatitude\t: ' + str(lat)
+    rtn += '\n\t\t\t\t\tlongitude\t: ' + str(lon)
     stdscr.addstr(Constants.HOME_PRINT_Y, Constants.HOME_PRINT_X, rtn)
 """
 def print_reset_home_position(drone, stdscr):
@@ -223,6 +224,7 @@ def print_return_home_state(drone, stdscr):
 
 def print_state(drone, stdscr):
     print_battery(drone, stdscr)
+    print_home_position(drone, stdscr)
     lat, lon = print_gps(drone, stdscr)
     print_altitude(drone, stdscr)
     print_attitude(drone, stdscr)
@@ -310,13 +312,24 @@ if __name__ == "__main__":
                 if "PATH" in key:
                     key = key.split('=')[1]
                     splited = key.split('&&')
-                    content = ''
-                    for data in splited:
-                        content += data + "__"
 
-                    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, content)
-                    stdscr.refresh()
-                    time.sleep(5)
+                    for data in splited:
+                        data = data.split('/')
+                        x = data[0]
+                        y = data[1]
+
+                        try:
+                            f_x = float(x)
+                            f_y = float(y)
+                        except Exception:
+                            continue
+
+                        drone.send_contoller_gps(f_x, f_y)
+                        input_processing(drone, 104, stdscr)
+                        time.sleep(3)
+                    key = '-1'
+                    input_processing(drone, 32, stdscr)
+
                 '''
                 splited = key.split('&&')
                 if len(splited) > 1:
