@@ -321,8 +321,8 @@ if __name__ == "__main__":
                         try:
                             f_x = float(x)
                             f_y = float(y)
-                        except Exception:
-                            continue
+                        except Exception as e:
+                            raise e
 
                         drone.send_contoller_gps(f_x, f_y)
                         input_processing(drone, 104, stdscr)
