@@ -69,7 +69,7 @@ def get_from_LTE(c_socket, locker, fifo):
                 print ('\nEND')
                 raise Exception
 
-def send_to_LTE(c_socket, locker, lat, lon):
+def send_to_LTE(c_socket, locker, gps_q):
         '''
         try:
             c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -86,12 +86,19 @@ def send_to_LTE(c_socket, locker, lat, lon):
         except Exception as e:
             continue
         '''
-        try:
-            locker.acquire()
-            c_socket.send('DVTYPE=1%%MSGTYPE=1%%DATA=' + str(lat) + '/' + str(lon) + '\n')
-            locker.release()
-        except (KeyboardInterrupt, SystemExit, Exception):
-            c_socket.close()
-            # fifo.close()
-            print ('\nEND')
-            raise Exception
+        cnt = 0
+        while True:
+            try:
+                gps = gps_q.get()
+                if cnt == 3:
+                    locker.acquire()
+                    c_socket.send('DVTYPE=1%%MSGTYPE=1%%DATA=' + gps + '\n')
+                    locker.release()
+                    cnt = 0
+                cnt = cnt + 1
+
+            except (KeyboardInterrupt, SystemExit, Exception):
+                c_socket.close()
+                # fifo.close()
+                print ('\nEND')
+                raise Exception

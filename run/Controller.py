@@ -277,7 +277,8 @@ if __name__ == "__main__":
     stdscr.keypad(1)
 
     '''FIFO INIT'''
-    pipe = multiprocessing.Queue()
+    cmd_q = multiprocessing.Queue()
+    gps_q = multiprocessing.Queue()
 
     '''SOCKET INIT'''
     c_socket = get_socket()
@@ -285,7 +286,8 @@ if __name__ == "__main__":
     cnt = 0
     try:
         locker = thread.allocate_lock()
-        thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, locker, pipe,))
+        thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, locker, cmd_q,))
+        thread.start_new_thread(Bybop_LTE.send_to_LTE, (c_socket, locker, gps_q))
         thread.start_new_thread(Bybop_BT.start_BT_service, (c_socket, locker, ))
 
         drone.set_cali()
@@ -303,7 +305,7 @@ if __name__ == "__main__":
 
             '''CMD PROCESSING'''
             try:
-                key = pipe.get(False)
+                key = cmd_q.get(False)
             except Exception:
                 if key not in CMD:
                     key = '-1'
@@ -321,10 +323,13 @@ if __name__ == "__main__":
 
             '''PRINTING MODULE'''
             lat, lon = print_state(drone, stdscr)
+            gps_q.put(str(lat) + '/' + str(lon))
+            '''
             if cnt == 3:
-                Bybop_LTE.send_to_LTE(c_socket, locker, lat, lon)
+
                 cnt = 0
             cnt = cnt + 1
+            '''
             stdscr.refresh()
             time.sleep(0.025) #40MHz / 25ms
 
