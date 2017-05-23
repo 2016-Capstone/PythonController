@@ -120,7 +120,7 @@ def input_processing(drone, key, stdscr):
         hometype = drone.get_test_hometype(stdscr)
         stdscr.refresh()
         time.sleep(1)
-    elif key == 97 or key == 'a':
+    #elif key == 97 or key == 'a':
         drone.go_node()
         rtn = 'Processing...'
         global IS_BACK_HOME_IN_PROCESS
@@ -218,7 +218,7 @@ def print_return_home_state(drone, stdscr):
     else :
         rtn += 'Not Yet'
 
-    stdscr.addstr(Constants.HOME_STATE_PRINT_Y, Constants.HOME_STATE_PRINT_X, rtn)
+    #stdscr.addstr(Constants.HOME_STATE_PRINT_Y, Constants.HOME_STATE_PRINT_X, rtn)
 
 
 def print_state(drone, stdscr):
@@ -228,7 +228,7 @@ def print_state(drone, stdscr):
     print_attitude(drone, stdscr)
     #print_home_position(drone, stdscr)
     '''print_reset_home_position(drone, stdscr)'''
-    #print_return_home_state(drone, stdscr)
+    print_return_home_state(drone, stdscr)
     return lat, lon
 
 
@@ -307,6 +307,17 @@ if __name__ == "__main__":
             '''CMD PROCESSING'''
             try:
                 key = cmd_q.get(False)
+                splited = key.split('&&')
+                if len(splited) > 1:
+                    input_processing(drone, 116, stdscr)
+                    for path in splited:
+                        path = path.split('/')
+                        x = path[0]
+                        y = path[1]
+                        drone.send_contoller_gps(x,y)
+                        input_processing(drone, 104, stdscr)
+                    key = '-1'
+                    input_processing(drone, 32, stdscr)
             except Exception:
                 if key not in CMD:
                     key = '-1'

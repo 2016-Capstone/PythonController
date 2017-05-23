@@ -498,9 +498,9 @@ class Device(object):
         except:
             return -1
 
-    def send_contoller_gps(self):
+    def send_contoller_gps(self, x, y):
         try:
-            return self.send_data('ardrone3.GPSSettings.SendControllerGPS', TEST_LAT, TEST_LON, TEST_AT, 0.5, 0.5)
+            return self.send_data('ardrone3.GPSSettings.SendControllerGPS', x, y, TEST_AT, 0.5, 0.5)
         except:
             return -1
 
