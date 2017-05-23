@@ -33,9 +33,9 @@ def get_from_LTE(c_socket, locker, fifo):
         fix = -1
         while (True):
             try:
-                locker.acquire()
+                #locker.acquire()
                 data = c_socket.recv(1024)
-                locker.release()
+                #locker.release()
                 if data == '':
                     break
                 if data == 'HELLO\n':

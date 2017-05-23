@@ -281,14 +281,15 @@ if __name__ == "__main__":
     gps_q = multiprocessing.Queue()
 
     '''SOCKET INIT'''
-    c_socket = get_socket()
+    recv_socekt = get_socket()
+    send_socket = get_socket()
 
     cnt = 0
     try:
         locker = thread.allocate_lock()
-        thread.start_new_thread(Bybop_LTE.get_from_LTE, (c_socket, locker, cmd_q,))
-        thread.start_new_thread(Bybop_LTE.send_to_LTE, (c_socket, locker, gps_q))
-        thread.start_new_thread(Bybop_BT.start_BT_service, (c_socket, locker, ))
+        thread.start_new_thread(Bybop_LTE.get_from_LTE, (recv_socekt, locker, cmd_q,))
+        thread.start_new_thread(Bybop_LTE.send_to_LTE, (send_socket, locker, gps_q))
+        thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker,))
 
         drone.set_cali()
         drone.get_cali(stdscr)
