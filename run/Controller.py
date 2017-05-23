@@ -121,21 +121,21 @@ def input_processing(drone, key, stdscr):
         hometype = drone.get_test_hometype(stdscr)
         stdscr.refresh()
         time.sleep(1)
+        if hometype != 1:
+            return
     #elif key == 97 or key == 'a':
-        #drone.go_node()
+        drone.go_node()
         rtn = 'Processing...'
-        cnt = 0
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
-            stdscr.clear()
-            print_home_position(drone, stdscr)
-            stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
-            stdscr.refresh()
-            time.sleep(1)
-            #==============================================
-            if cnt == 10:
+            try:
+                stdscr.clear()
+                print_home_position(drone, stdscr)
+                stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
+                stdscr.refresh()
+                time.sleep(1)
+            except (KeyboardInterrupt) as e:
                 break
-            cnt = cnt + 1
         IS_BACK_HOME_IN_PROCESS = True
 
     else:
@@ -244,81 +244,80 @@ def put_gps(drone, gps_q):
         time.sleep(1)
 
 if __name__ == "__main__":
-
-    print 'Searching for devices'
-
-    '''DISCOVERY'''
-    discovery = Discovery(DeviceID.ALL)
-    discovery.wait_for_change()
-    devices = discovery.get_devices()
-    discovery.stop()
-
-    if not devices:
-        print 'Oops ...'
-        sys.exit(1)
-
-    device = devices.itervalues().next()
-
-    '''CONNECT'''
-    print 'Will connect to ' + get_name(device)
-    d2c_port = 54321
-    controller_type = "PC"
-    controller_name = "bybop shell"
-    drone = Bybop_Device.create_and_connect(device, d2c_port, controller_type, controller_name)
-
-    if drone is None:
-        print 'Unable to connect to a product'
-        sys.exit(1)
-
-    drone.dump_state()
-
-    '''SHELL SET'''
-    vars = globals().copy()
-    vars.update(locals())
-    readline.set_completer(rlcompleter.Completer(vars).complete)
-    readline.parse_and_bind("tab: complete")
-    shell = code.InteractiveConsole(vars)
-
-    #shell.interact()
-
-    '''NEW WINDOW'''
-    stdscr = curses.initscr()
-    curses.cbreak()
-    stdscr.nodelay(1)
-    stdscr.keypad(1)
-
-    '''FIFO INIT'''
-    cmd_q = multiprocessing.Queue()
-    gps_q = multiprocessing.Queue()
-
-    '''SOCKET INIT'''
-    recv_socekt = get_socket()
-    send_socket = get_socket()
-
-    cnt = 0
     try:
+        print 'Searching for devices'
+
+        '''DISCOVERY'''
+        discovery = Discovery(DeviceID.ALL)
+        discovery.wait_for_change()
+        devices = discovery.get_devices()
+        discovery.stop()
+
+        if not devices:
+            print 'Oops ...'
+            sys.exit(1)
+
+        device = devices.itervalues().next()
+
+        '''CONNECT'''
+        print 'Will connect to ' + get_name(device)
+        d2c_port = 54321
+        controller_type = "PC"
+        controller_name = "bybop shell"
+        drone = Bybop_Device.create_and_connect(device, d2c_port, controller_type, controller_name)
+
+        if drone is None:
+            print 'Unable to connect to a product'
+            sys.exit(1)
+
+        drone.dump_state()
+
+        '''SHELL SET'''
+        vars = globals().copy()
+        vars.update(locals())
+        readline.set_completer(rlcompleter.Completer(vars).complete)
+        readline.parse_and_bind("tab: complete")
+        shell = code.InteractiveConsole(vars)
+
+        #shell.interact()
+
+        '''NEW WINDOW'''
+        stdscr = curses.initscr()
+        curses.cbreak()
+        stdscr.nodelay(1)
+        stdscr.keypad(1)
+
+        '''FIFO INIT'''
+        cmd_q = multiprocessing.Queue()
+        gps_q = multiprocessing.Queue()
+
+        '''SOCKET INIT'''
+        recv_socekt = get_socket()
+        send_socket = get_socket()
+
+        '''THREAD INIT'''
         locker = thread.allocate_lock()
         thread.start_new_thread(Bybop_LTE.get_from_LTE, (recv_socekt, locker, cmd_q,))
         thread.start_new_thread(Bybop_LTE.send_to_LTE, (send_socket, locker, gps_q))
         #thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker, stdscr))
         thread.start_new_thread(put_gps, (drone, gps_q))
 
+        '''DRONE INIT SET'''
         drone.set_cali()
         drone.get_cali(stdscr)
         #drone.get_mav_availability(stdscr)
         drone.set_max_altitude(5)
         drone.set_home_type()
-        drone.trim()
 
         '''MAIN ROUTINE'''
         key = ''
         while key != ord('q'):
-        #while key != 113:
             stdscr.clear()
 
             '''CMD PROCESSING'''
             try:
                 key = cmd_q.get(False)
+                '''PATH PROCESSING'''
                 if "PATH" in key:
                     key = key.split('=')[1]
                     splited = key.split('&&')
@@ -334,7 +333,7 @@ if __name__ == "__main__":
                         except Exception as e:
                             log(stdscr, str(e))
                             time.sleep(3)
-                            raise e
+                            break
 
                         drone.send_contoller_gps(f_x, f_y)
                         input_processing(drone, 104, stdscr)
@@ -375,12 +374,7 @@ if __name__ == "__main__":
 
             '''PRINTING MODULE'''
             print_state(drone, stdscr)
-            '''
-            if cnt == 3:
 
-                cnt = 0
-            cnt = cnt + 1
-            '''
             stdscr.refresh()
             time.sleep(0.025) #40MHz / 25ms
 
@@ -390,4 +384,5 @@ if __name__ == "__main__":
         curses.endwin()
         raise
 
+    curses.endwin()
     drone.stop()

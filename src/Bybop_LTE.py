@@ -63,11 +63,11 @@ def get_from_LTE(c_socket, locker, fifo):
                 else:
                     print e
                     break
-            except (KeyboardInterrupt, SystemExit, Exception):
+            except (KeyboardInterrupt, SystemExit, Exception) as e:
                 c_socket.close()
                 #fifo.close()
                 print ('\nEND')
-                raise Exception
+                raise e
 
 def send_to_LTE(c_socket, locker, gps_q):
         '''
@@ -95,8 +95,8 @@ def send_to_LTE(c_socket, locker, gps_q):
                 c_socket.send("\n")
                 locker.release()
 
-            except (KeyboardInterrupt, SystemExit, Exception):
+            except (KeyboardInterrupt, SystemExit, Exception) as e:
                 c_socket.close()
                 # fifo.close()
                 print ('\nEND')
-                raise Exception
+                raise e
