@@ -124,6 +124,7 @@ def input_processing(drone, key, stdscr):
     #elif key == 97 or key == 'a':
         #drone.go_node()
         rtn = 'Processing...'
+        cnt = 0
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             stdscr.clear()
@@ -131,6 +132,10 @@ def input_processing(drone, key, stdscr):
             stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
             stdscr.refresh()
             time.sleep(1)
+            #==============================================
+            if cnt == 10:
+                break
+            cnt = cnt + 1
         IS_BACK_HOME_IN_PROCESS = True
 
     else:
@@ -149,7 +154,6 @@ def print_gps(drone, stdscr):
     rtn += '\n\tlatitude\t: ' + str(lat)
     rtn += '\n\tlongitude\t: ' + str(lon)
     stdscr.addstr(Constants.GPS_PRINT_Y, Constants.GPS_PRINT_X, rtn)
-    return lat, lon
     #stdscr.refresh()
 
 def print_altitude(drone, stdscr):
@@ -226,14 +230,18 @@ def print_return_home_state(drone, stdscr):
 def print_state(drone, stdscr):
     print_battery(drone, stdscr)
     print_home_position(drone, stdscr)
-    lat, lon = print_gps(drone, stdscr)
+    print_gps(drone, stdscr)
     print_altitude(drone, stdscr)
     print_attitude(drone, stdscr)
     #print_home_position(drone, stdscr)
     '''print_reset_home_position(drone, stdscr)'''
     print_return_home_state(drone, stdscr)
-    return lat, lon
 
+def put_gps(drone, gps_q):
+    while True:
+        at, lat, lon = drone.get_gps()
+        gps_q.put(str(lat) + '/' + str(lon))
+        time.sleep(1)
 
 if __name__ == "__main__":
 
@@ -293,6 +301,7 @@ if __name__ == "__main__":
         thread.start_new_thread(Bybop_LTE.get_from_LTE, (recv_socekt, locker, cmd_q,))
         thread.start_new_thread(Bybop_LTE.send_to_LTE, (send_socket, locker, gps_q))
         #thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker, stdscr))
+        thread.start_new_thread(put_gps, (drone, gps_q))
 
         drone.set_cali()
         drone.get_cali(stdscr)
@@ -365,8 +374,7 @@ if __name__ == "__main__":
             input_processing(drone, intKey, stdscr)
 
             '''PRINTING MODULE'''
-            lat, lon = print_state(drone, stdscr)
-            gps_q.put(str(lat) + '/' + str(lon))
+            print_state(drone, stdscr)
             '''
             if cnt == 3:
 
