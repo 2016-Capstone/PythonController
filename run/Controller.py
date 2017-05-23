@@ -26,6 +26,7 @@ CMD = ['65','66','68','67','114','102','100','103','113']
 
 def log(stdscr, str):
     stdscr.addstr(10, 20, '[DEBUG] : ' + str)
+    stdscr.refresh()
 
 '''
 def get_fifo(PATH):
@@ -115,7 +116,7 @@ def input_processing(drone, key, stdscr):
             stdscr.refresh()
             time.sleep(2)
     elif key == 104 or key == 'h': #home
-        drone.send_contoller_gps()
+        #drone.send_contoller_gps()
         #drone.reset_node()
         hometype = drone.get_test_hometype(stdscr)
         stdscr.refresh()
@@ -314,14 +315,16 @@ if __name__ == "__main__":
                     splited = key.split('&&')
 
                     for data in splited:
-                        data = data.split('/')
-                        x = data[0]
-                        y = data[1]
+                        choped = data.split('/')
+                        x = choped[0]
+                        y = choped[1]
 
                         try:
                             f_x = float(x)
                             f_y = float(y)
                         except Exception as e:
+                            log(stdscr, str(e))
+                            time.sleep(3)
                             raise e
 
                         drone.send_contoller_gps(f_x, f_y)
