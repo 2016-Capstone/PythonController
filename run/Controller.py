@@ -170,9 +170,9 @@ def print_attitude(drone, stdscr):
 def print_home_position(drone, stdscr):
     at, lat, lon = drone.get_home_position()
     rtn = '>>realtime_home_position'
-    rtn += '\n\t\t\t\t\taltitude\t: ' + str(at)
-    rtn += '\n\t\t\t\t\tlatitude\t: ' + str(lat)
-    rtn += '\n\t\t\t\t\tlongitude\t: ' + str(lon)
+    rtn += '\n\taltitude\t: ' + str(at)
+    rtn += '\n\tlatitude\t: ' + str(lat)
+    rtn += '\n\tlongitude\t: ' + str(lon)
     stdscr.addstr(Constants.HOME_PRINT_Y, Constants.HOME_PRINT_X, rtn)
 """
 def print_reset_home_position(drone, stdscr):
