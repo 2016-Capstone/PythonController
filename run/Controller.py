@@ -309,6 +309,8 @@ if __name__ == "__main__":
                 key = cmd_q.get(False)
                 splited = key.split('&&')
                 if len(splited) > 1:
+                    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, splited) 
+                    stdscr.refresh()
                     #input_processing(drone, 116, stdscr)
                     for path in splited:
                         path = path.split('/')
