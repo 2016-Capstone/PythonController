@@ -310,7 +310,11 @@ if __name__ == "__main__":
                 if "PATH" in key:
                     key = key.split('=')[1]
                     splited = key.split('&&')
-                    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, splited)
+                    content = ''
+                    for data in splited:
+                        content += data + "__"
+
+                    stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, content)
                     stdscr.refresh()
                     time.sleep(5)
                 '''
