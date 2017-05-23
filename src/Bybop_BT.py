@@ -71,6 +71,7 @@ def socket_lte_send_img(c_socket, locker, length, img):
     while totalsent < length:
         locker.acquire()
         result = c_socket.send(img)
+        c_socket.send("")
         locker.release()
         if result == 0:
             print 'socket connection broken'
