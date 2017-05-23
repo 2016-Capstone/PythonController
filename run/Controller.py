@@ -135,6 +135,8 @@ def input_processing(drone, key, stdscr):
                 stdscr.addstr(Constants.KEY_PRINT_Y, Constants.KEY_PRINT_X, rtn)
                 stdscr.refresh()
                 time.sleep(1)
+                alt = drone.get_altitude()
+                get_return_home_state(drone, stdscr)
             except (KeyboardInterrupt, Exception) as e:
                 break
         IS_BACK_HOME_IN_PROCESS = True
@@ -237,6 +239,44 @@ def print_state(drone, stdscr):
     #print_home_position(drone, stdscr)
     '''print_reset_home_position(drone, stdscr)'''
     print_return_home_state(drone, stdscr)
+
+def get_return_home_state(drone, stdscr):
+    state, reason = drone.get_return_home_state()
+    rtn = '>>realtime_return_home_state'
+    rtn += '\n\tstate\t: '
+    if state is 0:
+        rtn += 'available'
+    elif state is 1:
+        rtn += 'inProgress'
+    elif state is 2:
+        rtn += 'unavailable'
+    elif state is 3:
+        rtn += 'pending (Navigate home has been received, but its process is pending)'
+    else:
+        rtn += 'Not Yet'
+
+    rtn += '\n\treason\t: '
+    if reason is 0:
+        rtn += 'userRequest'
+    elif reason is 1:
+        rtn += 'connectionLost'
+    elif reason is 2:
+        rtn += 'lowBattery'
+    elif reason is 3:
+        rtn += 'finished'
+        global IS_BACK_HOME_IN_PROCESS
+        IS_BACK_HOME_IN_PROCESS = False
+        raise Exception
+    elif reason is 4:
+        rtn += 'stopped'
+    elif reason is 5:
+        rtn += 'disabled'
+    elif reason is 6:
+        rtn += 'enabled'
+    else :
+        rtn += 'Not Yet'
+
+    stdscr.addstr(Constants.HOME_STATE_PRINT_Y, Constants.HOME_STATE_PRINT_X, rtn)
 
 def put_gps(drone, gps_q):
     while True:
