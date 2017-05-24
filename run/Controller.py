@@ -383,6 +383,8 @@ if __name__ == "__main__":
                             time.sleep(3)
                         key = '-1'
                         input_processing(drone, 32, stdscr)
+                    else:
+                        drone.set_home_type()
 
                 '''
                 splited = key.split('&&')
