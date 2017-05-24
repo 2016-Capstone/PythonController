@@ -475,14 +475,23 @@ class Device(object):
         except:
             return -1, -1, -1
 
+    def get_home_type(self):
+        try:
+            values = self._state.get_value('ardrone3.GPSState.HomeTypeChosenChanged')
+            typ = values['type']
+            return typ
+        except:
+            return -1
+
     def get_test_hometype(self, stdscr):
         stdscr.clear()
         stdscr.addstr(9, 13, '[ Can you run Return Home? ]')
         stdscr.refresh()
         script = ''
         try:
-            values = self._state.get_value('ardrone3.GPSState.HomeTypeChosenChanged')
-            typ = values['type']
+            #values = self._state.get_value('ardrone3.GPSState.HomeTypeChosenChanged')
+            #typ = values['type']
+            typ = self.get_home_type()
 
             if typ == 0:
                 script = 'The drone will try to return to the take off position'

@@ -360,28 +360,29 @@ if __name__ == "__main__":
                 key = cmd_q.get(False)
                 '''PATH PROCESSING'''
                 if "PATH" in key:
-                    key = key.split('=')[1]
-                    splited = key.split('&&')
+                    if drone.get_home_type() == 1:
+                        key = key.split('=')[1]
+                        splited = key.split('&&')
 
-                    for data in splited:
-                        choped = data.split('/')
-                        x = choped[0]
-                        y = choped[1]
+                        for data in splited:
+                            choped = data.split('/')
+                            x = choped[0]
+                            y = choped[1]
 
-                        try:
-                            f_x = float(x)
-                            f_y = float(y)
-                        except Exception as e:
-                            log(stdscr, str(e))
+                            try:
+                                f_x = float(x)
+                                f_y = float(y)
+                            except Exception as e:
+                                log(stdscr, str(e))
+                                time.sleep(3)
+                                break
+
+                            drone.send_contoller_gps(f_x, f_y)
+                            drone.send_contoller_gps(f_x, f_y)
+                            input_processing(drone, 104, stdscr)
                             time.sleep(3)
-                            break
-                        
-                        drone.send_contoller_gps(f_x, f_y)
-                        drone.send_contoller_gps(f_x, f_y)
-                        input_processing(drone, 104, stdscr)
-                        time.sleep(3)
-                    key = '-1'
-                    input_processing(drone, 32, stdscr)
+                        key = '-1'
+                        input_processing(drone, 32, stdscr)
 
                 '''
                 splited = key.split('&&')
