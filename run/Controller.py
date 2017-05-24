@@ -62,7 +62,7 @@ def get_socket():
 
         return c_socket
 
-def input_processing(drone, key, stdscr):
+def input_processing(drone, key, stdscr, cmd_q = None):
     hometype = 2
     if key == 65 or key == curses.KEY_UP: #UP
         #stdscr.refresh()
@@ -129,6 +129,17 @@ def input_processing(drone, key, stdscr):
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             try:
+                if cmd_q is not None:
+                    try:
+                        key = cmd_q.get(False)
+                        if key == '32':
+                            drone.land()
+                            raise KeyboardInterrupt
+                    except (KeyboardInterrupt) as e:
+                        raise Exception
+                    except Exception:
+                        key = -1
+
                 drone.go_node()
                 stdscr.clear()
                 print_home_position(drone, stdscr)
@@ -139,6 +150,7 @@ def input_processing(drone, key, stdscr):
                 get_return_home_state(drone, stdscr)
             except (KeyboardInterrupt, Exception) as e:
                 break
+                raise Exception
         IS_BACK_HOME_IN_PROCESS = True
 
     else:
@@ -379,7 +391,7 @@ if __name__ == "__main__":
 
                             drone.send_contoller_gps(f_x, f_y)
                             drone.send_contoller_gps(f_x, f_y)
-                            input_processing(drone, 104, stdscr)
+                            input_processing(drone, 104, stdscr, cmd_q)
                             time.sleep(3)
                         key = '-1'
                         input_processing(drone, 32, stdscr)
