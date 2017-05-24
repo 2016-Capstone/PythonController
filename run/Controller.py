@@ -129,6 +129,7 @@ def input_processing(drone, key, stdscr, cmd_q = None):
         global IS_BACK_HOME_IN_PROCESS
         while IS_BACK_HOME_IN_PROCESS:
             try:
+                '''
                 if cmd_q is not None:
                     try:
                         key = cmd_q.get(False)
@@ -140,6 +141,7 @@ def input_processing(drone, key, stdscr, cmd_q = None):
                     except Exception:
                         key = -1
 
+                '''
                 drone.go_node()
                 stdscr.clear()
                 print_home_position(drone, stdscr)
@@ -150,7 +152,6 @@ def input_processing(drone, key, stdscr, cmd_q = None):
                 get_return_home_state(drone, stdscr)
             except (KeyboardInterrupt, Exception) as e:
                 break
-                raise Exception
         IS_BACK_HOME_IN_PROCESS = True
 
     else:
@@ -356,6 +357,7 @@ if __name__ == "__main__":
         thread.start_new_thread(put_gps, (drone, gps_q))
 
         '''DRONE INIT SET'''
+        drone.send_contoller_gps(500.0, 500.0)
         drone.set_cali()
         drone.get_cali(stdscr)
         drone.get_mav_availability(stdscr)
@@ -372,7 +374,7 @@ if __name__ == "__main__":
                 key = cmd_q.get(False)
                 '''PATH PROCESSING'''
                 if "PATH" in key:
-                    if drone.get_home_type() == 1:
+                    if True:
                         key = key.split('=')[1]
                         splited = key.split('&&')
 
