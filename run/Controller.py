@@ -375,7 +375,7 @@ if __name__ == "__main__":
         recv_socekt = get_socket()
         send_gps_socket = get_socket()
         send_state_socket = get_socket()
-        send_realtime_data_socket = get_socket()  # 이렇게 따로 보내야 할 필요가 있는지 생각해보자
+        send_realtime_data_socket = get_socket()
 
         '''THREAD INIT'''
         locker = thread.allocate_lock()
