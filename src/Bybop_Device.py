@@ -507,6 +507,24 @@ class Device(object):
         except:
             return -1
 
+    def get_realtime_data(self):
+        at, lat, lon = self.get_gps()
+        battery = self.get_battery()
+        back_home_typ = self.get_home_type()
+        altitude = self.get_altitude()
+
+        gps = str(lat) + '/' + str(lon)
+        bat = str(battery)
+        if back_home_typ == 0:
+            bhtyp = 'take-off'
+        elif back_home_typ == 1:
+            bhtyp = 'pilot'
+        else:
+            bhtyp = 'GPS err'
+        alt = str(altitude)
+
+        return gps, bat, bhtyp, alt
+
     def send_contoller_gps(self, x, y):
         try:
             return self.send_data('ardrone3.GPSSettings.SendControllerGPS', x, y, 1, 0.5, 0.5)

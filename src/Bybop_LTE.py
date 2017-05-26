@@ -69,7 +69,7 @@ def get_from_LTE(c_socket, locker, fifo):
                 print ('\nEND')
                 raise e
 
-def send_to_LTE(c_socket, locker, gps_q):
+def send_gps_to_LTE(c_socket, locker, gps_q):
         '''
         try:
             c_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -100,3 +100,33 @@ def send_to_LTE(c_socket, locker, gps_q):
                 # fifo.close()
                 print ('\nEND')
                 raise e
+
+def send_state_to_LTE(c_socket, locker, state_q):
+    while True:
+        try:
+            data = state_q.get()
+            locker.acquire()
+            c_socket.send('DVTYPE=1%%MSGTYPE=5%%DATA=' + data + '\n')
+            c_socket.send("\n")
+            locker.release()
+
+        except (KeyboardInterrupt, SystemExit, Exception) as e:
+            c_socket.close()
+            # fifo.close()
+            print ('\nEND')
+            raise e
+
+def send_realtime_data_to_LTE(c_socket, locker, realtime_q):
+    while True:
+        try:
+            data = realtime_q.get()
+            locker.acquire()
+            c_socket.send('DVTYPE=1%%MSGTYPE=6%%DATA=' + data + '\n')
+            c_socket.send("\n")
+            locker.release()
+
+        except (KeyboardInterrupt, SystemExit, Exception) as e:
+            c_socket.close()
+            # fifo.close()
+            print ('\nEND')
+            raise e
