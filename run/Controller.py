@@ -385,6 +385,7 @@ if __name__ == "__main__":
         thread.start_new_thread(Bybop_LTE.send_realtime_data_to_LTE, (send_realtime_data_socket, locker, realtime_q))
         # thread.start_new_thread(Bybop_BT.start_BT_service, (send_socket, locker, stdscr))
         thread.start_new_thread(put_gps, (drone, gps_q))
+        thread.start_new_thread(put_realtime_data(), (drone, realtime_q))
 
         '''DRONE INIT SET'''
         state_q.put('Preparing')
