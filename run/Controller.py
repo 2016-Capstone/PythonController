@@ -109,7 +109,7 @@ def input_processing(drone, key, stdscr, cmd_q=None):
     elif key == 109 or key == 'm':  # Mav Mode
         cnt = 1
         while drone.get_mav_state(stdscr) is not True:
-            if cnt == 3:
+            if cnt == 5:
                 stdscr.clear()
                 stdscr.addstr(Constants.MAV_PRINT_Y, Constants.MAV_PRINT_X, 'MAV Doesnt work :(')
                 stdscr.refresh()
@@ -267,6 +267,8 @@ def get_return_home_state(drone, stdscr):
     rtn += '\n\tstate\t: '
     if state is 0:
         rtn += 'available'
+        global IS_BACK_HOME_AVAILABLE
+        IS_BACK_HOME_AVAILABLE = True
     elif state is 1:
         rtn += 'inProgress'
     elif state is 2:
