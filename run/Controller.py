@@ -397,8 +397,12 @@ if __name__ == "__main__":
         input_processing(drone, 109, stdscr)
         '''MAIN ROUTINE'''
         key = ''
+        cnt = 1
         while key != ord('q'):
-            state_q.put('InProcess')
+            if cnt == 40:
+                state_q.put('InProcess')
+                cnt = 1
+            cnt = cnt + 1
             stdscr.clear()
 
             '''CMD PROCESSING'''
