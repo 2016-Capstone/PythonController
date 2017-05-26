@@ -314,9 +314,9 @@ def put_realtime_data(drone, realtime_q):
     while True:
         gps, bat, bhtyp, alt = drone.get_realtime_data()
         script = 'gps_' + gps
-        script = '&&bat_' + bat
-        script = '&&bhtyp_' + bhtyp
-        script = '&&alt_' + alt
+        script += '&&bat_' + bat
+        script += '&&bhtyp_' + bhtyp
+        script += '&&alt_' + alt
         realtime_q.put(script)
         time.sleep(1)
 
