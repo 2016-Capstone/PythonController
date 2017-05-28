@@ -117,7 +117,7 @@ def input_processing(drone, key, stdscr, cmd_q=None):
                 break
             cnt = cnt + 1
             stdscr.clear()
-        if (cnt < 3):
+        if (cnt < 5):
             stdscr.clear()
             stdscr.addstr(Constants.MAV_PRINT_Y, Constants.MAV_PRINT_X, 'MAV WORKS GOOD!!!')
             stdscr.refresh()
@@ -319,7 +319,6 @@ def put_realtime_data(drone, realtime_q):
         script += '&&alt_' + alt
         realtime_q.put(script)
         time.sleep(1)
-
 
 if __name__ == "__main__":
     try:
