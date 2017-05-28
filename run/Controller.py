@@ -437,7 +437,7 @@ if __name__ == "__main__":
                         state_q.put('Auto-Piloting')
                         drone.send_contoller_gps(f_x, f_y)
                         drone.send_contoller_gps(f_x, f_y)
-                        key = input_processing(drone, 104, stdscr, cmd_q, state_q)
+                        key = input_processing(drone, 104, stdscr, cmd_q)
                         if key != '-1':
                             state_q.put('ManualMode')
                             break
