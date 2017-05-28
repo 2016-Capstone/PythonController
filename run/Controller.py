@@ -388,6 +388,7 @@ if __name__ == "__main__":
 
         '''DRONE INIT SET'''
         state_q.put('Preparing')
+        drone.trim()
         drone.send_contoller_gps(500.0, 500.0)
         drone.set_cali()
         drone.get_cali(stdscr)
